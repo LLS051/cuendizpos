@@ -367,10 +367,10 @@ if (isset($food_menu_ingredients)) {
                                 <p id="ingredient_id_err_msg"></p>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <!-- <div class="col-md-3">
                             <div class="hidden-xs hidden-sm">&nbsp;</div>
                             <a class="btn btn-danger" style="background-color: red;margin-top: 5px;" data-toggle="modal" data-target="#noticeModal"><?php echo lang('read_me_first'); ?></a>
-                        </div>
+                        </div> -->
                         <div class="clearfix"></div>
                         <div class="hidden-lg hidden-sm">&nbsp;</div>
                     </div>
@@ -460,7 +460,7 @@ if (isset($food_menu_ingredients)) {
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label><?php echo "Optional Testing" ?> ? <span class="required_star"> *</span></label>
+                                <label><?php echo "Es Comida Vegetariana?" ?> ? <span class="required_star"> *</span></label>
                                 <select tabindex="2" class="form-control select2" id="veg_item" name="veg_item" style="width: 100%;">
                                     <option value=""><?php echo lang('select'); ?></option>
                                     <option value="Veg No"><?php echo lang('no'); ?></option>
@@ -480,7 +480,7 @@ if (isset($food_menu_ingredients)) {
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label><?php echo "Optional Testing"; ?> ? <span class="required_star">*</span></label>
+                                <label><?php echo "Es una bebida?"; ?> ? <span class="required_star">*</span></label>
                                 <select tabindex="2" class="form-control select2" id="beverage_item" name="beverage_item" style="width: 100%;">
                                     <option value=""><?php echo lang('select'); ?></option>
                                     <option value="Beverage No"><?php echo lang('no'); ?></option>
@@ -500,7 +500,7 @@ if (isset($food_menu_ingredients)) {
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label><?php echo "Optional Testing"; ?> ? <span class="required_star">*</span></label>
+                                <label><?php echo "Es un articulo de bar?"; ?> ? <span class="required_star">*</span></label>
                                 <select tabindex="2" class="form-control select2" id="bar_item" name="bar_item" style="width: 100%;">
                                     <option value=""><?php echo lang('select'); ?></option>
                                     <option value="Bar No"><?php echo lang('no'); ?></option>
@@ -558,7 +558,7 @@ if (isset($food_menu_ingredients)) {
         </div>
     </div>
 
-    <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <!-- <div class="modal fade" id="noticeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="noticeModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -585,12 +585,12 @@ if (isset($food_menu_ingredients)) {
                             </p>
                         </div>
                         <div class="col-md-12">
-                            <p class="foodMenuCartInfo">
+                            <p class="foodMenuCartInfo"> -->
                                 <!-- Please mention the consumption in the unit shown at right. <br>
                                  eg: 5Kg, 0.20Kg, 3L, 0.50L, 1Pcs etc
                                  <br>
                                  <br>-->
-                                <a style="font-weight: bold;" href="https://www.convert-me.com/en/convert/" target="_blank"><?php echo lang('click_here'); ?></a>  <?php echo lang('notice_text_2'); ?>
+                                <!-- <a style="font-weight: bold;" href="https://www.convert-me.com/en/convert/" target="_blank"><?php echo lang('click_here'); ?></a>  <?php echo lang('notice_text_2'); ?>
                                 <br>
                                 <br>
                                 <?php echo lang('notice_text_3'); ?>
@@ -603,5 +603,6 @@ if (isset($food_menu_ingredients)) {
 
             </div>
         </div>
-    </div>
+    </div> -->
+
 </section>

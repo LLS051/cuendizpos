@@ -37,10 +37,10 @@
 
                 <div id="receipt-data">
                     <div class="text-center">
-                        <img src="<?php echo ss_location . ss_print_logo; ?>" alt="name" width="auto" height="100">
-                        <h3>
+                    <img src="<?php echo ss_location . ss_print_logo; ?>" alt="cuendizrestaurant" width="auto" height="80">
+                        <h4>
                             <?php echo $this->session->userdata('outlet_name'); ?>
-                        </h3>
+                        </h4>
                         <p><?php echo $this->session->userdata('address'); ?>
                             <br>
                             Tel: <?php echo $this->session->userdata('phone'); ?>

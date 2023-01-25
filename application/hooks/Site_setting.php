@@ -6,9 +6,10 @@ class Site_setting {
 
     function setSetting(){
 
-        // $urlL = 'http://localhost/test_sistema/';
+        // $urlL = 'http://192.168.0.112/cuendizpos/';
+        //  $urlL = 'http://localhost/cuendizpos/';
         // $urlL = 'http://localhost/pos/systemPOS';
-        $urlL = 'https://salessystem.cuendizestilista.com/';
+        $urlL = 'https://system.cuendizrestaurant.com/';
 
         $ss_location = $urlL.'/site_setting/';
 

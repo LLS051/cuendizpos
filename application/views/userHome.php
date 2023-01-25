@@ -378,7 +378,7 @@ $uri = $this->uri->segment(2);
                         if ($this->session->userdata('role') == 'Admin') {;
                         ?>
                             <li>
-                                <a href="<?php echo base_url(); ?>Local_setting/setting/"><i class="fa fa-gear"></i> <span><?php echo 'Configuracion Local'; ?></span></a>
+                                <a href="<?php echo base_url(); ?>Restaurant_setting/setting/"><i class="fa fa-gear"></i> <span><?php echo 'Configuracion Local'; ?></span></a>
                             </li>
                             <!-- <li>
                                     <a href="<?php echo base_url(); ?>Outlet/outlets"><i class="fa fa-list-ol"></i> <span><?php echo lang('outlet_list'); ?></span></a>
@@ -396,10 +396,10 @@ $uri = $this->uri->segment(2);
                                     <?php if (in_array('Sale', $this->session->userdata('menu_access'))) { ?>
                                         <li><a href="<?php echo base_url(); ?>Sale/POS"><i class="fa fa-angle-double-right"></i><?php echo lang('pos'); ?></a></li>
                                     <?php } ?>
-                                    <!-- <?php if (in_array('Kitchen', $this->session->userdata('menu_access'))) { ?>
+                                    <?php if (in_array('Kitchen', $this->session->userdata('menu_access'))) { ?>
                                         <li><a href="<?php echo base_url(); ?>Kitchen/panel"><i class="fa fa-angle-double-right"></i><?php echo lang('kitchen'); ?></a></li>
                                         <?php } ?>
-                                        <?php if (in_array('Bar', $this->session->userdata('menu_access'))) { ?>
+                                        <!-- <?php if (in_array('Bar', $this->session->userdata('menu_access'))) { ?>
                                         <li><a href="<?php echo base_url(); ?>Bar/panel"><i class="fa fa-angle-double-right"></i><?php echo lang('bar'); ?></a></li>
                                         <?php } ?>
                                         <?php if (in_array('Waiter', $this->session->userdata('menu_access'))) { ?>
@@ -473,12 +473,12 @@ $uri = $this->uri->segment(2);
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="<?php echo base_url(); ?>Report/registerReport"><i class="fa fa-angle-double-right"></i><?php echo lang('register_report'); ?></a></li>
-                                    <!-- <li><a href="<?php echo base_url(); ?>Report/dailySummaryReport"><i class="fa fa-angle-double-right"></i><?php echo lang('daily_summary_report'); ?></a></li> -->
-                                    <!-- <li><a href="<?php echo base_url(); ?>Report/foodMenuSales"><i class="fa fa-angle-double-right"></i><?php echo lang('food_sale_report'); ?></a></li> -->
+                                    <li><a href="<?php echo base_url(); ?>Report/dailySummaryReport"><i class="fa fa-angle-double-right"></i><?php echo lang('daily_summary_report'); ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Report/foodMenuSales"><i class="fa fa-angle-double-right"></i><?php echo lang('food_sale_report'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Report/saleReportByDate"><i class="fa fa-angle-double-right"></i><?php echo lang('daily_sale_report'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Report/detailedSaleReport"><i class="fa fa-angle-double-right"></i><?php echo lang('detailed_sale_report'); ?></a></li>
-                                    <!-- <li><a href="<?php echo base_url(); ?>Report/consumptionReport"><i class="fa fa-angle-double-right"></i><?php echo lang('consumption_report'); ?></a></li> -->
-                                    <!-- <li><a href="<?php echo base_url(); ?>Report/inventoryReport"><i class="fa fa-angle-double-right"></i><?php echo lang('inventory_report'); ?></a></li> -->
+                                    <li><a href="<?php echo base_url(); ?>Report/consumptionReport"><i class="fa fa-angle-double-right"></i><?php echo lang('consumption_report'); ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Report/inventoryReport"><i class="fa fa-angle-double-right"></i><?php echo lang('inventory_report'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Inventory/getInventoryAlertList"><i class="fa fa-angle-double-right"></i><?php echo lang('low_inventory_report'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Report/profitLossReport"><i class="fa fa-angle-double-right"></i><?php echo lang('profit_loss_report'); ?></a></li>
                                     <!-- <li><a href="<?php echo base_url(); ?>Report/vatReport"><i class="fa fa-angle-double-right"></i><?php echo lang('vat_report'); ?></a></li> -->
@@ -489,11 +489,11 @@ $uri = $this->uri->segment(2);
                                     <!-- <li><a href="<?php echo base_url(); ?>Report/customerDueReport"><i class="fa fa-angle-double-right"></i><?php echo lang('customer_due_report'); ?></a></li> -->
                                     <!-- <li><a href="<?php echo base_url(); ?>Report/customerReport"><i class="fa fa-angle-double-right"></i><?php echo lang('customer_ledger'); ?></a></li> -->
                                     <li><a href="<?php echo base_url(); ?>Report/saleReportByMonth"><i class="fa fa-angle-double-right"></i>Reporte de Ventas por Mes</a></li>
-                                    <!-- li><a href="<?php echo base_url(); ?>Report/purchaseReportByDate"><i class="fa fa-angle-double-right"></i><?php echo lang('purchase_report'); ?></a></li> -->
+                                    <li><a href="<?php echo base_url(); ?>Report/purchaseReportByDate"><i class="fa fa-angle-double-right"></i><?php echo lang('purchase_report'); ?></a></li>
                                     <!-- <li><a href="<?php echo base_url(); ?>Report/purchaseReportByMonth"><i class="fa fa-angle-double-right"></i>Pur. Report by Month</a></li>  -->
                                     <!-- <li><a href="<?php echo base_url(); ?>Report/purchaseReportByDate"><i class="fa fa-angle-double-right"></i>Pur. Report by Date</a></li>
                                         <li><a href="<?php echo base_url(); ?>Report/purchaseReportByIngredient"><i class="fa fa-angle-double-right"></i>Pur. Report by Ingredient</a></li>  -->
-                                    <!-- <li><a href="<?php echo base_url(); ?>Report/detailedPurchaseReport"><i class="fa fa-angle-double-right"></i>Reporte Detallado de compra</a></li> -->
+                                    <li><a href="<?php echo base_url(); ?>Report/detailedPurchaseReport"><i class="fa fa-angle-double-right"></i>Reporte Detallado de compra</a></li>
                                     <li><a href="<?php echo base_url(); ?>Report/expenseReport"><i class="fa fa-angle-double-right"></i><?php echo lang('expense_report'); ?></a></li>
                                     <!-- <li><a href="<?php echo base_url(); ?>Report/wasteReport"><i class="fa fa-angle-double-right"></i><?php echo lang('waste_report'); ?></a></li> -->
                                 </ul>
@@ -510,15 +510,15 @@ $uri = $this->uri->segment(2);
                                 <ul class="treeview-menu">
                                     <li><a href="<?php echo base_url(); ?>Master/ingredientCategories"><i class="fa fa-angle-double-right"></i><?php echo "Categorias"; ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Master/Units"><i class="fa fa-angle-double-right"></i><?php echo "Presentacion del producto"; ?></a></li>
-                                    <li><a href="<?php echo base_url(); ?>Master/ingredients"><i class="fa fa-angle-double-right"></i><?php echo "Add Productos"; ?></a></li>
-                                    <!-- <li><a href="<?php echo base_url(); ?>Master/modifiers"><i class="fa fa-angle-double-right"></i><?php echo lang('modifiers'); ?></a></li> -->
-                                    <li><a href="<?php echo base_url(); ?>Master/foodMenuCategories"><i class="fa fa-angle-double-right"></i><?php echo "Productos"; ?></a></li>
-                                    <li><a href="<?php echo base_url(); ?>Master/foodMenus"><i class="fa fa-angle-double-right"></i><?php echo "Venta de Productos"; ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Master/ingredients"><i class="fa fa-angle-double-right"></i><?php echo "Añadir Ingredientes"; ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Master/modifiers"><i class="fa fa-angle-double-right"></i><?php echo 'Opcionales'; ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Master/foodMenuCategories"><i class="fa fa-angle-double-right"></i><?php echo "Categorias de los Alimentos"; ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Master/foodMenus"><i class="fa fa-angle-double-right"></i><?php echo "Menu de Comida"; ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Master/suppliers"><i class="fa fa-angle-double-right"></i><?php echo lang('suppliers'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Master/customers"><i class="fa fa-angle-double-right"></i><?php echo lang('customers'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Master/expenseItems"><i class="fa fa-angle-double-right"></i><?php echo lang('expense_items'); ?></a></li>
                                     <li><a href="<?php echo base_url(); ?>Master/paymentMethods"><i class="fa fa-angle-double-right"></i><?php echo lang('payment_methods'); ?></a></li>
-                                    <li><a href="<?php echo base_url(); ?>Master/tables"><i class="fa fa-angle-double-right"></i><?php echo 'Lugares'; ?></a></li>
+                                    <li><a href="<?php echo base_url(); ?>Master/tables"><i class="fa fa-angle-double-right"></i><?php echo 'Mesas'; ?></a></li>
                                 </ul>
                             </li>
                         <?php } ?>

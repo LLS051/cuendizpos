@@ -89,7 +89,7 @@ class Restaurant_setting extends CI_Controller {
 					}
                     $this->session->set_flashdata('exception', 'Information has been updated successfully!');
                 }
-                redirect('Local_setting/setting');
+                redirect('Restaurant_setting/setting');
             } else {
                 $data = array();
                 $data['encrypted_id'] = $encrypted_id;

@@ -24,9 +24,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-//$urlL = 'http://localhost/test_sistema/';
+// $urlL = 'http://192.168.0.112/cuendizpos/';
+// $urlL = 'http://localhost/cuendizpos/';
 // $urlL = 'http://localhost/pos/systemPOS';
-$urlL = 'https://salessystem.cuendizestilista.com/';
+$urlL = 'https://system.cuendizrestaurant.com/';
 
 $config['base_url'] = $urlL;
 

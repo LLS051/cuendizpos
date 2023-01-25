@@ -37,7 +37,7 @@
 | 				 can make your site vulnerable to SQL injection if you are using a
 | 				 multi-byte character set and are running versions lower than these.
 | 				 Sites using Latin-1 or UTF-8 database character set and collation are unaffected.
-|	['swap_pre'] A default table prefix that should be swapped with the dbprefix
+|	['swap_pre'] A default table prefix that should be swapped with the dbprefixlocalhost
 |	['encrypt']  Whether or not to use an encrypted connection.
 |	['compress'] Whether or not to use client compression (MySQL only)
 |	['stricton'] TRUE/FALSE - forces 'Strict Mode' connections
@@ -64,9 +64,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => '145.14.156.1',
-	'username' => 'u732999531_root',
-	'password' => 'Co$mico05!99',
-	'database' => 'u732999531_system',
+	'username' => 'u732999531_sys',
+	'password' => 'Co$mico05!10',
+	'database' => 'u732999531_cuendizpos',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

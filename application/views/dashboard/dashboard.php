@@ -73,10 +73,11 @@
                     <div class="inner">
                         <h3><?php echo $food_menu_count->data_count; ?></h3>
 
-                        <p><?php echo "Productos"; ?></p>
+                        <p><?php echo "Alimentos"; ?></p>
                     </div>
                     <div class="icon">
-                        <iconify-icon icon="icon-park-twotone:foundation-makeup"></iconify-icon>
+                    <iconify-icon icon="game-icons:chicken-oven" style="color: white;"></iconify-icon>
+
                     </div>
                 </div>
 
@@ -86,7 +87,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
-            <div class="small-box rounded" style="background: #7a9c2d; color:#000000; ">
+            <div class="small-box rounded" style="background: #626201; color:#000000; ">
                 <div class="cont-icon" style="margin-right: 15px;">
                     <div class="inner">
                         <h3><?php echo $ingredient_count->data_count; ?></h3>
@@ -152,23 +153,23 @@
                     </div>
                     <div class="box-body">
                         <div style="width: 24%; float: left; height: 260px;">
-                            <a class="btn icon-btn btn-info" style=" border: none; background-color: #000000;" href="<?php echo base_url(); ?>Master/addEditFoodMenu"><span class="fa fa-book text-info"></span>+ <?php echo "Add Products"; ?></a>
+                            <a class="btn icon-btn btn-info" style=" border: none; background-color: #fba819; color:#000000;" href="<?php echo base_url(); ?>Master/addEditFoodMenu"><span class="fa fa-book text-info" style="color: #000000;"></span>+ <?php echo "Add Products"; ?></a>
                             <!--<a class="btn icon-btn btn-info" style="background-color: #F39C12;" href="<?php echo base_url(); ?>SupplierPayment/addSupplierPayment"><span class="fa fa-user text-info"></span>+ <?php echo lang('supplier_payment'); ?></a>-->
-                            <a class="btn icon-btn btn-info" style="border: none; background-color: #7a9c2d; border: none; color:#000000" href="<?php echo base_url(); ?>Sale/POS"><span class="fa fa-television text-info" style="color: #000000;"></span><?php echo lang('pos'); ?></a>
+                            <a class="btn icon-btn btn-info" style="border: none; background-color: #626201; border: none; color:#000000" href="<?php echo base_url(); ?>Sale/POS"><span class="fa fa-television text-info" style="color: #000000;"></span><?php echo lang('pos'); ?></a>
                             <a class="btn icon-btn btn-info" style="border: none; background-color:  #FFD700; color: #000000;" href="<?php echo base_url(); ?>Expense/addEditExpense"><span class="fa fa-money text-info" style="color: #000000;"></span>+ <?php echo lang('expense'); ?></a>
                             <a class="btn icon-btn btn-info" style="border: none; background-color: #3e0085" href="<?php echo base_url(); ?>Purchase/addEditPurchase"><span class="fa fa-truck text-info"></span>+ <?php echo lang('purchase'); ?></a>
                         </div>
                         <div style="width: 46%; float: right; height: 260px;">
-                            <a class="btn icon-btn btn-info" style="border: none; background-color: #000000;" href="<?php echo base_url(); ?>Report/dailySummaryReport"><span class="fa fa-list text-info"></span><?php echo lang('daily_summary_report'); ?></a>
-                            <a class="btn icon-btn btn-info" style="border: none; background-color: #000000;" href="<?php echo base_url(); ?>Report/registerReport"><span class="fa fa-list text-info"></span><?php echo lang('register_report'); ?></a>
-                            <a class="btn icon-btn btn-info" style="border: none; background-color: #7a9c2d; border: none; color:#000000" href="<?php echo base_url(); ?>Report/profitLossReport"><span class="fa fa-list text-info" style="color: #000000;"></span><?php echo lang('profit_loss_report'); ?></a>
+                            <a class="btn icon-btn btn-info" style="border: none; background-color: #fba819; color:#000000;" href="<?php echo base_url(); ?>Report/dailySummaryReport"><span class="fa fa-list text-info" style="color: #000000;"></span><?php echo lang('daily_summary_report'); ?></a>
+                            <a class="btn icon-btn btn-info" style="border: none; background-color: #fba819; color:#000000;" href="<?php echo base_url(); ?>Report/registerReport"><span class="fa fa-list text-info" style="color: #000000;"></span><?php echo lang('register_report'); ?></a>
+                            <a class="btn icon-btn btn-info" style="border: none; background-color: #626201; border: none; color:#000000" href="<?php echo base_url(); ?>Report/profitLossReport"><span class="fa fa-list text-info" style="color: #000000;"></span><?php echo lang('profit_loss_report'); ?></a>
                             <a class="btn icon-btn btn-info" style="border: none; background-color:  #FFD700; color: #000000;" href="<?php echo base_url(); ?>Report/saleReportByDate"><span class="fa fa-list text-info" style="color: #000000;"></span><?php echo lang('sales_report'); ?></a>
                             <a class="btn icon-btn btn-info" style="border: none; background-color: #3e0085" href="<?php echo base_url(); ?>Report/foodMenuSales"><span class="fa fa-list text-info"></span><?php echo 'Informe de venta de Productos'; ?></a>
                         </div>
                         <div style="width: 30%; float: left; height: 260px;">
                             <!--<a class="btn icon-btn btn-info" style="border: none; background-color: #0c1713;" href="<?php echo base_url(); ?>Short_message_service/smsService"><span class="fa fa-envelope text-info"></span><?php echo lang('send_sms'); ?></a>-->
-                            <a class="btn icon-btn btn-info" style="border: none; background-color: #000000;" href="<?php echo base_url(); ?>Inventory/index"><span class="fa fa-cube text-info"></span><?php echo lang('inventory'); ?></a>
-                            <a class="btn icon-btn btn-info" style="border: none; background-color: #7a9c2d; border: none; color:#000000" href="<?php echo base_url(); ?>Inventory_adjustment/inventoryAdjustments"><span class="fa fa-adjust text-info" style="color: #000000;"></span><?php echo lang('inventory_adjustment'); ?></a>
+                            <a class="btn icon-btn btn-info" style="border: none; background-color: #fba819; color:#000000;" href="<?php echo base_url(); ?>Inventory/index"><span class="fa fa-cube text-info" style="color: #000000;"></span><?php echo lang('inventory'); ?></a>
+                            <a class="btn icon-btn btn-info" style="border: none; background-color: #626201; border: none; color:#000000" href="<?php echo base_url(); ?>Inventory_adjustment/inventoryAdjustments"><span class="fa fa-adjust text-info" style="color: #000000;"></span><?php echo lang('inventory_adjustment'); ?></a>
                             <a class="btn icon-btn btn-info" style="border: none; background-color:  #FFD700; color: #000000;" href="<?php echo base_url(); ?>Customer_due_receive/customerDueReceives"><span class="fa fa-users text-info" style="color: #000000;"></span>+ <?php echo lang('customer_receive'); ?></a>
                             <a class="btn icon-btn btn-info" style="border: none; background-color: #3e0085" href="<?php echo base_url(); ?>Attendance/addEditAttendance"><span class="fa fa-clock-o text-info"></span>+ <?php echo lang('attendance'); ?></a>
                         </div>
@@ -628,7 +629,7 @@
                 value: <?php echo $take_away_count->take_away_count; ?>,
                 color: '#3e0085',
                 highlight: '#3e0085',
-                label: 'Pick Up'
+                label: 'Para Llevar'
             },
             {
                 value: <?php echo $delivery_count->delivery_count; ?>,

@@ -1,7 +1,7 @@
 var base_url = $('base').attr('data-base');
 var role = $('base[data-role]').attr('data-role');
 
-var csrf_value_ = $("#csrf_value_").val(); 
+var csrf_value_ = $("#csrf_value_").val();
 
 $(document).ready(function(){
 	$(document).on('click','#refresh_orders_button',function(){
@@ -12,7 +12,7 @@ $(document).ready(function(){
 	$(document).on('change','#group_by_order_item',function(){
 		var menu_id = $(this).val();
 		var menu_name = $("#group_by_order_item option[value='"+menu_id+"']").text();
-		
+
 		$('#order_holder .single_order').each(function(i, obj) {
 			var $this = $(this);
 			var found = 0;
@@ -48,7 +48,7 @@ $(document).ready(function(){
 		var single_order = $(this).parent().parent().parent();
 		if(single_order.attr('data-order-type')=="Dine In"){
 			if($(this).attr('data-selected')=="selected"){
-				
+
 				$(this).removeClass('light-sky-background');
 				$(this).find('.item_quanity_text').css('color','');
 				$(this).find('.item_name').css('color','');
@@ -62,7 +62,7 @@ $(document).ready(function(){
 					$(this).find('.item_qty').css('color','#fff');
 					$(this).find('.modifiers').css('color','#fff');
 					$(this).find('.note').css('color','#fff');
-					$(this).attr('data-selected','selected');	
+					$(this).attr('data-selected','selected');
 				}
 				$(this).attr('data-selected','unselected');
 				var single_order_selected_item = single_order.find('.single_item[data-selected="selected"]').length;
@@ -70,7 +70,7 @@ $(document).ready(function(){
 					single_order.find('.start_cooking_button').fadeOut();
 					single_order.find('.done_cooking').fadeOut();
 				}
-			}else{ 
+			}else{
 				$(this).addClass('light-sky-background');
 				$(this).find('.item_quanity_text').css('color','#fff');
 				$(this).find('.item_name').css('color','#fff');
@@ -80,23 +80,23 @@ $(document).ready(function(){
 				$(this).find('.single_item_cooking_status').css('color','#fff');
 				$(this).attr('data-selected','selected');
 				if($(this).find('.single_item_cooking_status').html()=='Not Ready'){
-					single_order.find('.start_cooking_button').fadeIn();	
+					single_order.find('.start_cooking_button').fadeIn();
 				}
 				if($(this).find('.single_item_cooking_status').html()=='In Preparation'){
-					single_order.find('.done_cooking').fadeIn();	
+					single_order.find('.done_cooking').fadeIn();
 				}
 				// single_order.find('.start_cooking_button').fadeIn();
 				// single_order.find('.done_cooking').fadeIn();
 			}
 		}else{
 			swal({
-				title: 'Alert', 
+				title: 'Alert',
 				text: "You should select all for Take Away and Delivery order, as these are pack!",
-                confirmButtonColor: '#b6d6f6' 
-			});  
+                confirmButtonColor: '#b6d6f6'
+			});
 		}
 
-		
+
 	});
 	$(document).on('click','.select_all_of_an_order',function(){
 		var order_id = $(this).attr('id').substr(23);
@@ -114,7 +114,7 @@ $(document).ready(function(){
 	});
 	$(document).on('click','.unselect_all_of_an_order',function(){
 		var order_id = $(this).attr('id').substr(25);
-		$('#single_order_'+order_id+' .items_holder .single_item').attr('data-selected','unselected');	
+		$('#single_order_'+order_id+' .items_holder .single_item').attr('data-selected','unselected');
 		$('#single_order_'+order_id+' .items_holder .single_item').removeClass('light-sky-background');
 		$('#single_order_'+order_id+' .items_holder .single_item').find('.item_quanity_text').css('color','');
 		$('#single_order_'+order_id+' .items_holder .single_item').find('.item_name').css('color','');
@@ -128,14 +128,14 @@ $(document).ready(function(){
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Done"]').find('.item_qty').css('color','#fff');
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Done"]').find('.modifiers').css('color','#fff');
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Done"]').find('.note').css('color','#fff');
-		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Done"]').attr('data-selected','selected');	
-		
+		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Done"]').attr('data-selected','selected');
+
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').find('.item_quanity_text').css('color','#fff');
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').find('.item_name').css('color','#fff');
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').find('.item_qty').css('color','#fff');
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').find('.modifiers').css('color','#fff');
 		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').find('.note').css('color','#fff');
-		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').attr('data-selected','selected');	
+		$('#single_order_'+order_id+' .items_holder .single_item[data-cooking-status="Started Cooking"]').attr('data-selected','selected');
 		$('#start_cooking_button_'+order_id).fadeOut();
 		$('#done_cooking_'+order_id).fadeOut();
 	});
@@ -150,7 +150,7 @@ $(document).ready(function(){
 				var total_items = $('#single_order_'+sale_id+' .items_holder .single_item[data-selected=selected]').length;
 				$('#single_order_'+sale_id+' .items_holder .single_item[data-selected=selected]').each(function(i, obj) {
 					if(j==total_items){
-						previous_id += $(this).attr('id').substr(15);	
+						previous_id += $(this).attr('id').substr(15);
 					}else{
 						previous_id += $(this).attr('id').substr(15)+',';
 					}
@@ -164,7 +164,7 @@ $(document).ready(function(){
 					$('#detail_item_id_'+entry).removeClass('light-sky-background');
 					$('#detail_item_id_'+entry+' .single_item_right_side .single_item_cooking_status').css('color','#fff');
 					$('#detail_item_id_'+entry+' .single_item_right_side .single_item_cooking_status').html('In Preparation');
-					
+
 
 				});
 				if(previous_id!=''){
@@ -181,8 +181,8 @@ $(document).ready(function(){
 							swal({
 								title: 'Alert',
 								text: "Cooking Started!!",
-				                confirmButtonColor: '#b6d6f6' 
-							});	
+				                confirmButtonColor: '#b6d6f6'
+							});
 
 						},
 						error:function(){
@@ -194,17 +194,17 @@ $(document).ready(function(){
 				swal({
 					title: "Alert!",
 					text: "Please select an item to Cook!",
-					confirmButtonColor: '#b6d6f6' 
-				})	
+					confirmButtonColor: '#b6d6f6'
+				})
 			}
 		}else{
 			var previous_id = '';
 			var j = 1;
 			var total_items = $('#single_order_'+sale_id+' .items_holder .single_item').length;
-			
+
 			$('#single_order_'+sale_id+' .items_holder .single_item').each(function(i, obj) {
 				if(j==total_items){
-					previous_id += $(this).attr('id').substr(15);	
+					previous_id += $(this).attr('id').substr(15);
 				}else{
 					previous_id += $(this).attr('id').substr(15)+',';
 				}
@@ -231,9 +231,9 @@ $(document).ready(function(){
 						swal({
 							title: 'Alert',
 							text: "Cooking Started!!",
-			                confirmButtonColor: '#b6d6f6' 
+			                confirmButtonColor: '#b6d6f6'
 						});
-								
+
 					},
 					error:function(){
 						alert("error");
@@ -253,7 +253,7 @@ $(document).ready(function(){
 				var total_items = $('#single_order_'+sale_id+' .items_holder .single_item[data-selected=selected]').length;
 				$('#single_order_'+sale_id+' .items_holder .single_item[data-selected=selected]').each(function(i, obj) {
 					if(j==total_items){
-						previous_id += $(this).attr('id').substr(15);	
+						previous_id += $(this).attr('id').substr(15);
 					}else{
 						previous_id += $(this).attr('id').substr(15)+',';
 					}
@@ -282,9 +282,9 @@ $(document).ready(function(){
 							swal({
 								title: 'Alert',
 								text: "Cooking Done!!",
-				                confirmButtonColor: '#b6d6f6' 
-							});	
-								
+				                confirmButtonColor: '#b6d6f6'
+							});
+
 						},
 						error:function(){
 							alert("error");
@@ -295,8 +295,8 @@ $(document).ready(function(){
 				swal({
 					title: "Alert!",
 					text: "Please select an item to cooking item done!",
-					confirmButtonColor: '#b6d6f6' 
-				})	
+					confirmButtonColor: '#b6d6f6'
+				})
 			}
 		}else{
 			var previous_id = '';
@@ -305,7 +305,7 @@ $(document).ready(function(){
 			if(total_items>0){
 				$('#single_order_'+sale_id+' .items_holder .single_item[data-selected=selected]').each(function(i, obj) {
 					if(j==total_items){
-						previous_id += $(this).attr('id').substr(15);	
+						previous_id += $(this).attr('id').substr(15);
 					}else{
 						previous_id += $(this).attr('id').substr(15)+',';
 					}
@@ -332,24 +332,24 @@ $(document).ready(function(){
 							swal({
 								title: 'Alert',
 								text: "Cooking Done!!",
-				                confirmButtonColor: '#b6d6f6' 
-							});	
+				                confirmButtonColor: '#b6d6f6'
+							});
 
 						},
 						error:function(){
 							alert("error");
 						}
 					});
-				}	
+				}
 			}else{
 				swal({
 					title: 'Alert',
 					text: "Please select an item to cooking item done!!",
-	                confirmButtonColor: '#b6d6f6' 
+	                confirmButtonColor: '#b6d6f6'
 				});
 			}
-			
-		}	
+
+		}
 	});
 
 
@@ -369,10 +369,10 @@ $(document).ready(function(){
 			swal({
 				title: 'Alert',
 				text: "You don't need to select or deselect any item for take away or delivery, because you need to deliver all items in a pack",
-                confirmButtonColor: '#b6d6f6' 
+                confirmButtonColor: '#b6d6f6'
 			});
 		}
-		
+
 	});
 	$('#deselect_all_items').on('click',function(){
 		if($('#order_details_holder .single_order[data-selected=selected]').attr('data-order-type')=='Dine In'){
@@ -382,9 +382,9 @@ $(document).ready(function(){
 			swal({
 				title: 'Alert',
 				text: "You don't need to select or deselect any item for take away or delivery, because you need to deliver all items in a pack",
-                confirmButtonColor: '#b6d6f6' 
+                confirmButtonColor: '#b6d6f6'
 			});
-			
+
 		}
 	});
 	$(document).on('click','#items_holder_of_order .single_item_in_order',function(){
@@ -398,7 +398,7 @@ $(document).ready(function(){
 				$(this).css('background-color','#B5D6F6');
 				$(this).attr('data-selected','selected');
 			}
-			
+
 		}
 	});
 	$('#start_cooking').on('click',function(){
@@ -410,7 +410,7 @@ $(document).ready(function(){
 				var total_items = $('#items_holder_of_order .single_item_in_order[data-selected=selected]').length;
 				$('#items_holder_of_order .single_item_in_order[data-selected=selected]').each(function(i, obj) {
 					if(j==total_items){
-						previous_id += $(this).attr('id').substr(12);	
+						previous_id += $(this).attr('id').substr(12);
 					}else{
 						previous_id += $(this).attr('id').substr(12)+',';
 					}
@@ -434,8 +434,8 @@ $(document).ready(function(){
 							swal({
 								title: 'Alert',
 								text: "Cooking Started!!",
-				                confirmButtonColor: '#b6d6f6' 
-							});	
+				                confirmButtonColor: '#b6d6f6'
+							});
 
 						},
 						error:function(){
@@ -447,8 +447,8 @@ $(document).ready(function(){
 				swal({
 					title: "Alert!",
 					text: "Please select an item to Cook!",
-					confirmButtonColor: '#b6d6f6' 
-				})	
+					confirmButtonColor: '#b6d6f6'
+				})
 			}
 		}else{
 			var previous_id = '';
@@ -456,7 +456,7 @@ $(document).ready(function(){
 			var total_items = $('#items_holder_of_order .single_item_in_order').length;
 			$('#items_holder_of_order .single_item_in_order').each(function(i, obj) {
 				if(j==total_items){
-					previous_id += $(this).attr('id').substr(12);	
+					previous_id += $(this).attr('id').substr(12);
 				}else{
 					previous_id += $(this).attr('id').substr(12)+',';
 				}
@@ -480,9 +480,9 @@ $(document).ready(function(){
 						swal({
 							title: 'Alert',
 							text: "Cooking Started!!",
-			                confirmButtonColor: '#b6d6f6' 
+			                confirmButtonColor: '#b6d6f6'
 						});
-								
+
 					},
 					error:function(){
 						alert("error");
@@ -500,7 +500,7 @@ $(document).ready(function(){
 				var total_items = $('#items_holder_of_order .single_item_in_order[data-selected=selected]').length;
 				$('#items_holder_of_order .single_item_in_order[data-selected=selected]').each(function(i, obj) {
 					if(j==total_items){
-						previous_id += $(this).attr('id').substr(12);	
+						previous_id += $(this).attr('id').substr(12);
 					}else{
 						previous_id += $(this).attr('id').substr(12)+',';
 					}
@@ -524,9 +524,9 @@ $(document).ready(function(){
 							swal({
 								title: 'Alert',
 								text: "Cooking Done!!",
-				                confirmButtonColor: '#b6d6f6' 
-							});	
-								
+				                confirmButtonColor: '#b6d6f6'
+							});
+
 						},
 						error:function(){
 							alert("error");
@@ -537,8 +537,8 @@ $(document).ready(function(){
 				swal({
 					title: "Alert!",
 					text: "Please select an item to cooking item done!",
-					confirmButtonColor: '#b6d6f6' 
-				})	
+					confirmButtonColor: '#b6d6f6'
+				})
 			}
 		}else{
 			var previous_id = '';
@@ -546,7 +546,7 @@ $(document).ready(function(){
 			var total_items = $('#items_holder_of_order .single_item_in_order').length;
 			$('#items_holder_of_order .single_item_in_order').each(function(i, obj) {
 				if(j==total_items){
-					previous_id += $(this).attr('id').substr(12);	
+					previous_id += $(this).attr('id').substr(12);
 				}else{
 					previous_id += $(this).attr('id').substr(12)+',';
 				}
@@ -570,8 +570,8 @@ $(document).ready(function(){
 						swal({
 							title: 'Alert',
 							text: "Cooking Done!!",
-			                confirmButtonColor: '#b6d6f6' 
-						});	
+			                confirmButtonColor: '#b6d6f6'
+						});
 
 					},
 					error:function(){
@@ -607,11 +607,11 @@ $(document).ready(function(){
 					order_type = "Delivery";
 				}
 				var draw_table_for_order='';
-							
+
 				for (var key in response.items) {
 					//construct div
 					var this_item = response.items[key];
-					
+
 					var selected_modifiers = '';
 					var selected_modifiers_id = '';
 					var selected_modifiers_price = '';
@@ -637,11 +637,11 @@ $(document).ready(function(){
 					}
 					var backgroundForSingleItem = '';
 					if(this_item.cooking_status=='Done'){
-						backgroundForSingleItem ='style="background-color:#598527;"';	
+						backgroundForSingleItem ='style="background-color:#598527;"';
 					}else if(this_item.cooking_status=='Started Cooking'){
 						backgroundForSingleItem ='style="background-color:#0c5889;"';
 					}
-					
+
 					draw_table_for_order += '<div '+backgroundForSingleItem+' data-order-type="'+order_type+'" data-selected="unselected" class="single_item_in_order fix floatleft" id="single_item_'+this_item.previous_id+'">';
 						draw_table_for_order += '<h3 class="item_name">'+this_item.menu_name+'</h3>';
 						draw_table_for_order += '<p class="item_qty">Qty: '+this_item.qty+'</p>';
@@ -653,7 +653,7 @@ $(document).ready(function(){
 				$("#items_holder_of_order").empty();
 				//add to top
 				$("#items_holder_of_order").prepend(draw_table_for_order);
-			
+
 			},
 			error:function(){
 				alert("error");
@@ -679,7 +679,7 @@ $(document).ready(function(){
 		$('#select_all_notification').prop('checked', false);
 	});
 	$('#notification_remove_all').on('click',function(){
-		
+
 		if($('.single_notification_checkbox:checked').length>0){
 			var r = confirm("Are you sure to delete all notifications?");
 			if (r ==false) {
@@ -691,7 +691,7 @@ $(document).ready(function(){
 			var checkbox_length = $('.single_notification_checkbox:checked').length;
 			$('.single_notification_checkbox:checked').each(function(i, obj) {
 				if(j==checkbox_length){
-					notifications += $(this).val();	
+					notifications += $(this).val();
 				}else{
 					notifications += $(this).val()+',';
 				}
@@ -718,12 +718,12 @@ $(document).ready(function(){
 						alert("error");
 					}
 				});
-			}			
+			}
 		}else{
 			swal({
 				title: 'Alert',
 				text: 'No notification is selected',
-                confirmButtonColor: '#b6d6f6' 
+                confirmButtonColor: '#b6d6f6'
 			});
 		}
 	});
@@ -742,7 +742,7 @@ $(document).ready(function(){
 			error:function(){
 				alert("error");
 			}
-		});	
+		});
 	});
 	$('#select_all_notification').on('change',function(){
 		if ($(this).is(':checked')) {
@@ -775,14 +775,14 @@ $('#items_holder_of_order').slimscroll({
 
 
 setInterval(function(){
-	
+
 	if($('#refresh_it_or_not').html()=='Yes'){
 		refresh_orders();
-	}	
-	new_notification_interval(); 
+	}
+	new_notification_interval();
 }, 15000);
 
-setInterval(function(){ 
+setInterval(function(){
 	$('#order_details_holder .single_order').each(function(i, obj) {
 		var order_id = $(this).attr('id').substr(13);
 		var minutes = $('#ordered_minute_'+order_id).html();
@@ -801,7 +801,7 @@ function upTime(object,minute,second) {
   	minute++;
   	second=0;
   }
-  
+
   minute = minute.toString();
   second = second.toString();
   minute = (minute.length==1)?'0'+minute:minute;
@@ -812,7 +812,7 @@ function upTime(object,minute,second) {
   // upTime2.to=setTimeout(function(){ upTime2(object,second,minute,hour); },1000);
 }
 function new_notification_interval(){
-	 
+
 	$.ajax({
 		url:base_url+"Kitchen/get_new_notifications_ajax",
 		method:"POST",
@@ -825,34 +825,34 @@ function new_notification_interval(){
 			var notification_counter_previous = $('#notification_counter').html();
 			$('#notification_counter').html(notification_counter_update);
 			if(notification_counter_update>notification_counter_previous){
-				
-				setTimeout(function(){ 
+
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#dc3545')
-					$('#notification_button').css('color','#fff'); 
+					$('#notification_button').css('color','#fff');
 				}, 500);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#ccc');
-					$('#notification_button').css('color','buttontext'); 
+					$('#notification_button').css('color','buttontext');
 				}, 1000);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#dc3545')
-					$('#notification_button').css('color','#fff'); 
+					$('#notification_button').css('color','#fff');
 				}, 1500);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#ccc');
-					$('#notification_button').css('color','buttontext'); 
+					$('#notification_button').css('color','buttontext');
 				}, 2000);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#dc3545')
-					$('#notification_button').css('color','#fff'); 
+					$('#notification_button').css('color','#fff');
 				}, 2500);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#ccc');
-					$('#notification_button').css('color','buttontext'); 
+					$('#notification_button').css('color','buttontext');
 				}, 3000);
-				setTimeout(function(){ 
+				setTimeout(function(){
 					$('#notification_button').css('background-color','#dc3545')
-					$('#notification_button').css('color','#fff'); 
+					$('#notification_button').css('color','#fff');
 				}, 3500);
 			}
 
@@ -876,12 +876,13 @@ function new_notification_interval(){
 		error:function(){
 			console.log("Notification refresh error");
 		}
-	});			
-	
+	});
+
 }
+
 refresh_orders();
 function refresh_orders() {
-	var url = base_url+"Kitchen/get_new_orders_ajax"; 
+	var url = base_url+"Kitchen/get_new_orders_ajax";
 	$('#refresh_it_or_not').html('Yes');
 	$.ajax({
 		url:url,
@@ -898,7 +899,7 @@ function refresh_orders() {
 			var i = 1;
 			for (var key in response) {
 				// if(i==1){
-					// $order_list_left += '<div class="single_order fix" style="margin-top:0px" data-selected="unselected" id="single_order_'+response[key].sales_id+'">';	
+					// $order_list_left += '<div class="single_order fix" style="margin-top:0px" data-selected="unselected" id="single_order_'+response[key].sales_id+'">';
 				// }else{
 				var order_name = '';
 				var order_type = '';
@@ -913,6 +914,10 @@ function refresh_orders() {
 					order_type = 'Delivery'
 				}
 
+                if (Number(response[key].is_kitchen_bell) == 1) {
+                    bell_new_order.play();
+                  }
+
 				var tables_booked = '';
 			    if(response[key].tables_booked.length>0){
 			        var w = 1;
@@ -924,7 +929,7 @@ function refresh_orders() {
 			                tables_booked += single_table.table_name+', ';
 			            }
 			            w++;
-			        }    
+			        }
 			    }else{
 			        tables_booked = 'None';
 			    }
@@ -938,18 +943,18 @@ function refresh_orders() {
 				var splitted_width = (parseFloat(width)/parseFloat(total_kitchen_type_items)).toFixed(2);
 				var percentage_for_started_cooking = (parseFloat(splitted_width)*parseFloat(total_kitchen_type_started_cooking_items)).toFixed(2);
 				var percentage_for_done_cooking = (parseFloat(splitted_width)*parseFloat(total_kitchen_type_done_items)).toFixed(2);
-				
-				
-				// $order_list_left += '<div class="background_order_started" style="width:'+percentage_for_started_cooking+'%"></div>';	
-				// $order_list_left += '<div class="background_order_done" style="width:'+percentage_for_done_cooking+'%"></div>';	
+
+
+				// $order_list_left += '<div class="background_order_started" style="width:'+percentage_for_started_cooking+'%"></div>';
+				// $order_list_left += '<div class="background_order_done" style="width:'+percentage_for_done_cooking+'%"></div>';
 				// }
-				
+
 				var table_name = (response[key].table_name!=null)?response[key].table_name:"";
 				var waiter_name = (response[key].waiter_name!=null)?response[key].waiter_name:"";
 				var customer_name = (response[key].customer_name!=null)?response[key].customer_name:"";
 				var booked_time = new Date(Date.parse(response[key].date_time));
 				var now = new Date();
-				
+
 				var  days = parseInt((now - booked_time) / (1000 * 60 * 60 * 24));
 				var  hours = parseInt(Math.abs(now - booked_time) / (1000 * 60 * 60) % 24);
 				var  minute = parseInt(Math.abs(now.getTime() - booked_time.getTime()) / (1000 * 60) % 60);
@@ -958,7 +963,7 @@ function refresh_orders() {
 				second = second.toString();
 				minute = (minute.length==1)?'0'+minute:minute;
 				second = (second.length==1)?'0'+second:second;
-				
+
 				if(total_kitchen_type_items!=total_kitchen_type_done_items){
 					$order_list_left += '<div class="fix floatleft single_order" data-order-type="'+order_type+'" data-selected="'+selected_unselected+'" id="single_order_'+response[key].sales_id+'">';
 	                    $order_list_left += '<div class="header_portion light-blue-background fix">';
@@ -979,7 +984,7 @@ function refresh_orders() {
 	                            var single_item = items[key_item];
 	                            var searched_found = searchItems(single_item.menu_name)
                                 if(searched_found.length==0){
-                                    window.order_items.push(single_item);    
+                                    window.order_items.push(single_item);
                                 }
 	                            var item_background = '';
 	                            var font_style = '';
@@ -1013,13 +1018,13 @@ function refresh_orders() {
 		                                       }else{
 		                                            modifiers_name += modifiers[key_modifier].name+', ';
 		                                       }
-		                                       w++; 
+		                                       w++;
 		                                    }
 		                                    if(modifiers_length>0){
-		                                        $order_list_left += '<p class="modifiers" style="'+font_style+'">- '+modifiers_name+'</p>';    
+		                                        $order_list_left += '<p class="modifiers" style="'+font_style+'">- '+modifiers_name+'</p>';
 		                                    }
 		                                    if(single_item.menu_note!=""){
-		                                        $order_list_left += '<p class="note" style="'+font_style+'">- '+single_item.menu_note+'</p>';    
+		                                        $order_list_left += '<p class="note" style="'+font_style+'">- '+single_item.menu_note+'</p>';
 		                                    }
 		                                $order_list_left += '</div>';
 	                                $order_list_left += '</div>';
@@ -1028,10 +1033,10 @@ function refresh_orders() {
 		                            $order_list_left += '</div>';
 	                            $order_list_left += '</div>';
 	                        }
-	                    
+
 	                    $order_list_left += '</div>';
 	                    $order_list_left += '<div class="single_order_button_holder" id="single_order_button_holder_'+response[key].sales_id+'">';
-	                        $order_list_left += '<button class="select_all_of_an_order" id="select_all_of_an_order_'+response[key].sales_id+'">Select All</button><button class="unselect_all_of_an_order" id="unselect_all_of_an_order_'+response[key].sales_id+'">Unselect All</button><button class="start_cooking_button" id="start_cooking_button_'+response[key].sales_id+'">Cook</button><button class="done_cooking" id="done_cooking_'+response[key].sales_id+'">Done</button>';    
+	                        $order_list_left += '<button class="select_all_of_an_order" id="select_all_of_an_order_'+response[key].sales_id+'">Select All</button><button class="unselect_all_of_an_order" id="unselect_all_of_an_order_'+response[key].sales_id+'">Unselect All</button><button class="start_cooking_button" id="start_cooking_button_'+response[key].sales_id+'">Cook</button><button class="done_cooking" id="done_cooking_'+response[key].sales_id+'">Done</button>';
 	                    $order_list_left += '</div>';
 	                $order_list_left += '</div>';
 	            }

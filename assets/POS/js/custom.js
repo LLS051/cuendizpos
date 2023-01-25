@@ -854,6 +854,31 @@ $(document).ready(function(){
 		clearInterval(interval);
 	});*/
 
+    $('#create_bill_and_close').on('click', function () {
+        $("#print_type").val(2);
+        $("#print_type").val(2);
+          if ($('.holder .order_details > .single_order[data-selected=selected]').length > 0) {
+
+              var sale_id = $('.holder .order_details .single_order[data-selected=selected]').attr('id').substr(6);
+
+              let newWindow = open("print_bill/"+sale_id, 'Print Invoice', 'width=450,height=550')
+              newWindow.focus();
+
+              newWindow.onload = function() {
+                  newWindow.document.body.insertAdjacentHTML('afterbegin');
+              };
+
+          } else {
+              swal({
+                  title: warning + "!",
+                  text: please_select_order_to_proceed + "!",
+                  confirmButtonText: ok,
+                  confirmButtonColor: '#b6d6f6'
+              })
+          }
+      });
+
+
 	$('#create_invoice_and_close,#order_details_create_invoice_close_order_button').on('click',function(){
 
 		if($('.holder .order_details > .single_order[data-selected=selected]').length>0){
@@ -1185,7 +1210,7 @@ $(document).ready(function(){
     	// if (e.keyCode == 13) {
         	var searched_string = $(this).val().trim();
 			var foundItems = searchItemAndConstructGallery(searched_string);
-	    	var searched_category_items_to_show = '<div id="searched_item_found" class="specific_category_items_holder" style="display:block;">';
+	    	var searched_category_items_to_show = '<div id="searched_item_found" class="specific_category_items_holder" style="display:grid;">';
 
 	    	for (var key in foundItems) {
 			    if (foundItems.hasOwnProperty(key)) {
@@ -1494,7 +1519,7 @@ $(document).ready(function(){
 	$(document).on('click','#button_category_show_all',function(){
 		$('.specific_category_items_holder').hide();
 		var foundItems = searchItemAndConstructGallery('');
-		var searched_category_items_to_show = '<div id="searched_item_found" class="specific_category_items_holder" style="display:block;">';
+		var searched_category_items_to_show = '<div id="searched_item_found" class="specific_category_items_holder" style="display:grid;">';
 
 		for (var key in foundItems) {
 			if (foundItems.hasOwnProperty(key)) {
@@ -1889,7 +1914,7 @@ $(document).ready(function(){
 				draw_table_for_order += '<div class="single_order_column first_column fix"><i style="cursor:pointer;" class="fas fa-pencil-alt edit_item" id="edit_item_'+item_id+'"></i> <span id="item_name_table_'+item_id+'">'+item_name+'</span></div>';
 				draw_table_for_order += '<div class="single_order_column second_column fix">'+currency+' <span id="item_price_table_'+item_id+'">'+item_price+'</span></div>';
 				draw_table_for_order += '<div class="single_order_column third_column fix"><i style="cursor:pointer;" class="fas fa-minus-circle decrease_item_table" id="decrease_item_table_'+item_id+'"></i> <span id="item_quantity_table_'+item_id+'">'+item_quantity+'</span> <i style="cursor:pointer;" class="fas fa-plus-circle increase_item_table" id="increase_item_table_'+item_id+'"></i></div>';
-				draw_table_for_order += '<div class="single_order_column forth_column fix"><input type="" name="" placeholder="Amt or %" class="special_textbox" id="percentage_table_'+item_id+'" value="'+discount_input_value+'" disabled></div>';
+				draw_table_for_order += '<div class="single_order_column forth_column fix"><input type="" name="" placeholder="Amt or %" class="special_textbox" id="percentage_table_'+item_id+'" value="'+discount_input_value+'"></div>';
 				draw_table_for_order += '<div class="single_order_column fifth_column fix">'+currency+' <span id="item_total_price_table_'+item_id+'">'+item_total_price+'</span></div>';
 			draw_table_for_order += '</div>';
 			if(selected_modifiers!=""){
@@ -3027,7 +3052,7 @@ function show_all_items() {
 	$('.specific_category_items_holder').hide();
 	setTimeout(function() {
 		var foundItems = searchItemAndConstructGallery('');
-		var searched_category_items_to_show = '<div id="searched_item_found" class="specific_category_items_holder" style="display:block;">';
+		var searched_category_items_to_show = '<div id="searched_item_found" class="specific_category_items_holder" style="display:grid;">';
 
 		for (var key in foundItems) {
 			if (foundItems.hasOwnProperty(key)) {
@@ -3059,7 +3084,7 @@ function show_all_items() {
 
 			$('.single_table_div[data-table-checked=checked],.single_table_div[data-table-checked=unchecked]').attr('data-table-checked','unchecked');
 			$('.single_table_div[data-table-checked=checked],.single_table_div[data-table-checked=unchecked]').css('background-color','#ffffff');
-			$(this).css('background-color','#b6d6f6');
+			$(this).css('background-color','#fba819');
 			$(this).attr('data-table-checked','checked');
 		}
 
@@ -3084,7 +3109,7 @@ function show_all_items() {
 		$('.holder .order_details .single_order').attr('data-selected','unselected');
 		$('.holder .order_details .single_order').css('background-color','#ffffff');
 		$(this).attr('data-selected','selected');
-		$(this).css('background-color','#b6d6f6');
+		$(this).css('background-color','#fba819');
 		$('#refresh_order').css('color','#dc3545');
 
 		var sale_id = $(this).attr('id').substr(6);
@@ -3965,7 +3990,7 @@ function set_new_orders_to_view(){
 			    }
 
 				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;text-align:left;width: 125px;float: left;">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-				// $order_list_left += '<p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+				$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 				$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 				$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 				$order_list_left += '</div>';
@@ -4019,14 +4044,14 @@ function set_new_orders_to_view_and_select_last_one(){
 				var percentage_for_done_cooking = (parseFloat(splitted_width)*parseFloat(total_kitchen_type_done_items)).toFixed(2);
 				if(i==1){
 					if(last_key==key){
-						$order_list_left += '<div data-started-cooking="'+total_kitchen_type_started_cooking_items+'" data-done-cooking="'+total_kitchen_type_done_items+'" class="single_order fix" style="margin-top:0px;background-color:#b6d6f6;" data-selected="selected" id="order_'+response[key].sales_id+'">';
+						$order_list_left += '<div data-started-cooking="'+total_kitchen_type_started_cooking_items+'" data-done-cooking="'+total_kitchen_type_done_items+'" class="single_order fix" style="margin-top:0px;background-color:#fba819;" data-selected="selected" id="order_'+response[key].sales_id+'">';
 					}else{
 						$order_list_left += '<div data-started-cooking="'+total_kitchen_type_started_cooking_items+'" data-done-cooking="'+total_kitchen_type_done_items+'" class="single_order fix" style="margin-top:0px" data-selected="unselected" id="order_'+response[key].sales_id+'">';
 					}
 
 				}else{
 					if(last_key==key){
-						$order_list_left += '<div data-started-cooking="'+total_kitchen_type_started_cooking_items+'" data-done-cooking="'+total_kitchen_type_done_items+'" class="single_order fix" style="background-color:#b6d6f6;" data-selected="selected" id="order_'+response[key].sales_id+'">';
+						$order_list_left += '<div data-started-cooking="'+total_kitchen_type_started_cooking_items+'" data-done-cooking="'+total_kitchen_type_done_items+'" class="single_order fix" style="background-color:#fba819;" data-selected="selected" id="order_'+response[key].sales_id+'">';
 					}else{
 						$order_list_left += '<div data-started-cooking="'+total_kitchen_type_started_cooking_items+'" data-done-cooking="'+total_kitchen_type_done_items+'" class="single_order fix" data-selected="unselected" id="order_'+response[key].sales_id+'">';
 					}
@@ -4082,7 +4107,7 @@ function set_new_orders_to_view_and_select_last_one(){
 			    }
 
 				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;text-align:left;width: 125px;float: left;">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-				// $order_list_left += '<p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+				$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 				$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 				$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 				$order_list_left += '</div>';
@@ -4186,7 +4211,7 @@ function set_new_orders_to_view_for_interval(){
 			    }
 
 				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;font-weight: bold;text-align:left;width:125px;float:left">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-				// $order_list_left += '<p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+				$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 				$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 				$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 				$order_list_left += '</div>';
@@ -4364,7 +4389,7 @@ function get_details_of_a_particular_hold(hold_id){
 				draw_table_for_order += '<div class="single_order_column first_column fix"><i style="cursor:pointer;" class="fas fa-pencil-alt edit_item" id="edit_item_'+this_item.food_menu_id+'"></i> <span id="item_name_table_'+this_item.food_menu_id+'">'+this_item.menu_name+'</span></div>';
 				draw_table_for_order += '<div class="single_order_column second_column fix">'+currency+' <span id="item_price_table_'+this_item.food_menu_id+'">'+this_item.menu_unit_price+'</span></div>';
 				draw_table_for_order += '<div class="single_order_column third_column fix"><i style="cursor:pointer;" class="fas fa-minus-circle decrease_item_table" id="decrease_item_table_'+this_item.food_menu_id+'"></i> <span id="item_quantity_table_'+this_item.food_menu_id+'">'+this_item.qty+'</span> <i style="cursor:pointer;" class="fas fa-plus-circle increase_item_table" id="increase_item_table_'+this_item.food_menu_id+'"></i></div>';
-				draw_table_for_order += '<div class="single_order_column forth_column fix"><input type="" name="" placeholder="Amt or %" class="special_textbox" id="percentage_table_'+this_item.food_menu_id+'" value="'+this_item.menu_discount_value+'" disabled></div>';
+				draw_table_for_order += '<div class="single_order_column forth_column fix"><input type="" name="" placeholder="Amt or %" class="special_textbox" id="percentage_table_'+this_item.food_menu_id+'" value="'+this_item.menu_discount_value+'"></div>';
 				draw_table_for_order += '<div class="single_order_column fifth_column fix">'+currency+' <span id="item_total_price_table_'+this_item.food_menu_id+'">'+this_item.menu_price_with_discount+'</span></div>';
 				draw_table_for_order += '</div>';
 				if(selected_modifiers!=""){
@@ -4471,7 +4496,7 @@ function get_details_of_a_particular_hold(hold_id){
 				$('.single_table_div').css('background-color','#ffffff');
 				if($('#single_table_'+response.table_id).attr('data-table-checked')!='busy'){
 					$('#single_table_'+response.table_id).attr('data-table-checked','checked');
-					$('#single_table_'+response.table_id).css('background-color','#b6d6f6');
+					$('#single_table_'+response.table_id).css('background-color','#fba819');
 				}
 			}
 		},
@@ -4954,7 +4979,7 @@ function cancel_order(sale_id){
 						var waiter_name = (response[key].waiter_name!=null)?response[key].waiter_name:"";
 						var customer_name = (response[key].customer_name!=null)?response[key].customer_name:"";
 						$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;font-weight: bold;text-align:left;width:125px;float:left;">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-						// $order_list_left += '<p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+						$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 						$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 						$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 						$order_list_left += '</div>';
@@ -5203,7 +5228,7 @@ function arrange_info_on_the_cart_to_modify(response){
 				draw_table_for_order += '<div class="single_order_column first_column fix"><i style="cursor:pointer;" class="fas fa-pencil-alt edit_item" id="edit_item_'+this_item.food_menu_id+'"></i> <span id="item_name_table_'+this_item.food_menu_id+'">'+this_item.menu_name+'</span></div>';
 				draw_table_for_order += '<div class="single_order_column second_column fix">'+currency+' <span id="item_price_table_'+this_item.food_menu_id+'">'+this_item.menu_unit_price+'</span></div>';
 				draw_table_for_order += '<div class="single_order_column third_column fix"><i style="cursor:pointer;" class="fas fa-minus-circle decrease_item_table" id="decrease_item_table_'+this_item.food_menu_id+'"></i> <span id="item_quantity_table_'+this_item.food_menu_id+'">'+this_item.qty+'</span> <i style="cursor:pointer;" class="fas fa-plus-circle increase_item_table" id="increase_item_table_'+this_item.food_menu_id+'"></i></div>';
-				draw_table_for_order += '<div class="single_order_column forth_column fix"><input type="" name="" placeholder="Amt or %" class="special_textbox" id="percentage_table_'+this_item.food_menu_id+'" value="'+this_item.menu_discount_value+'" disabled></div>';
+				draw_table_for_order += '<div class="single_order_column forth_column fix"><input type="" name="" placeholder="Amt or %" class="special_textbox" id="percentage_table_'+this_item.food_menu_id+'" value="'+this_item.menu_discount_value+'"></div>';
 				draw_table_for_order += '<div class="single_order_column fifth_column fix">'+currency+' <span id="item_total_price_table_'+this_item.food_menu_id+'">'+this_item.menu_price_with_discount+'</span></div>';
 			draw_table_for_order += '</div>';
 			if(selected_modifiers!=""){
@@ -5388,3 +5413,23 @@ function callValidationAjax(){
         }
     });
 }
+
+
+// Music
+
+
+//separetor
+
+$('#create_invoice_and_close').on('mouseover',function(){
+	$('.invoiceToolTip').slideDown(333);
+});
+$('#create_invoice_and_close').on('mouseleave',function(){
+	$('.invoiceToolTip').slideUp(333);
+});
+
+$('#create_bill_and_close').on('mouseover',function(){
+	$('.billToolTip').slideDown(333);
+});
+$('#create_bill_and_close').on('mouseleave',function(){
+	$('.billToolTip').slideUp(333);
+});

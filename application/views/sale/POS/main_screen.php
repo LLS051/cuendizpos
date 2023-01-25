@@ -17,7 +17,7 @@ function cmp($a, $b)
 {
     return strcmp($a->category_id, $b->category_id);
 }
-usort($food_menus, "cmp");
+sort($food_menus, "cmp");
 foreach ($food_menus as $single_menus) {
     //checks that whether its new category or not
     $is_new_category = false;
@@ -27,7 +27,7 @@ foreach ($food_menus as $single_menus) {
     //if it's 0 then set current category id to $previous category and set first category div
     if ($previous_category == 0) {
         $previous_category = $current_category;
-        $menu_to_show .= '<div id="category_' . $single_menus->category_id . '" class="specific_category_items_holder">';
+        $menu_to_show .= '<div id="category_' . $single_menus->category_id . '" class="specific_category_items_holder" style="display: grid">';
     }
     //if previous category and current category is not equal. it means it's a new category
     if ($previous_category != $current_category) {
@@ -38,7 +38,7 @@ foreach ($food_menus as $single_menus) {
     //div
     if ($is_new_category == true && $total_menus != $i) {
         $menu_to_show .= '</div>';
-        $menu_to_show .= '<div id="category_' . $single_menus->category_id . '" class="specific_category_items_holder">';
+        $menu_to_show .= '<div id="category_' . $single_menus->category_id . '" class="specific_category_items_holder" style="display: grid"> ';
     }
     $img_size = @getimagesize(base_url() . 'assets/POS/images/' . $single_menus->photo);
     if (!empty($img_size) && $single_menus->photo != "") {
@@ -263,8 +263,8 @@ foreach ($new_orders as $single_new_order) {
         $tables_booked = 'None';
     }
     $order_list_left .= '<span id="open_orders_order_status_' . $single_new_order->sales_id . '" style="display:none;">' . $single_new_order->order_status . '</span><p style="font-size: 16px;text-align: left;width: 125px;float: left;">Factura: <span class="running_order_order_number">' . $order_name . '</span></p><img src="' . base_url() . 'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_' . $single_new_order->sales_id . '">';
-    // $order_list_left .= '<p>'.('Mesa').': <span class="running_order_table_name">'.$tables_booked.'</span></p>';
-    $order_list_left .= '<p>' . ('Trabajador') . ': <span class="running_order_waiter_name">' . $single_new_order->waiter_name . '</span></p>';
+    $order_list_left .= '<br> <p>'.('Mesa').': <span class="running_order_table_name">'.$tables_booked.'</span></p>';
+    $order_list_left .= '<p>' . ('Mesero') . ': <span class="running_order_waiter_name">' . $single_new_order->waiter_name . '</span></p>';
     $order_list_left .= '<p>' . ('Cliente') . ': <span class="running_order_customer_name">' . $single_new_order->customer_name . '</span></p>';
     $order_list_left .= '</div>';
     // $order_list_left .= '<div class="order_condition">';
@@ -481,19 +481,21 @@ foreach ($notifications as $single_notification) {
                         <?php if ($this->session->userdata('pre_or_post_payment') == "Post Payment") { ?>
                             <button class="operation_button fix newmod" id="modify_order"><i class="fas fa-edit"></i> <?php echo 'Modificar'; ?></button>
                         <?php } ?>
-                        <!-- <button class="operation_button fix newordpri" id="single_order_details"><i class="fas fa-info-circle"></i> <?php echo lang('order_details') ?><br><?php echo lang('print_kot'); ?> </button> -->
-                        <!-- <button class="operation_button fix newkot" id="print_kot"><i class="fas fa-print"></i> <?php echo lang('print_kot'); ?></button> -->
+                        <button class="operation_button fix newordpri" id="single_order_details"><i class="fas fa-info-circle"></i> <?php echo lang('order_details') ?><br><?php echo lang('print_kot'); ?> </button>
+                        <button class="operation_button fix newmod" id="print_kot"><i class="fas fa-print"></i> <?php echo lang('print_kot'); ?></button>
                         <?php if ($this->session->userdata('pre_or_post_payment') == "Post Payment") { ?>
-                            <button class="operation_button fix newcreate" id="create_invoice_and_close"><i class="fas fa-file-invoice"></i> <?php echo lang('create_invoice_close'); ?></button>
+                            <button class="operation_button fix newcreate" style="background-color: #6ec100 !important; color: #000 !important" id="create_invoice_and_close"><i class="fas fa-file-invoice"></i> <?php echo lang('create_invoice_close'); ?></button>
+                            <button class="operation_button fix newcreate" id="create_bill_and_close"><i class="fas fa-file-invoice"></i> <?php echo ('Imprimir Pre-Factura'); ?></button>
+
                         <?php } ?>
                         <?php if ($this->session->userdata('pre_or_post_payment') == "Pre Payment") { ?>
-                            <button class="operation_button fix newcreate" id="print_invoice"><i class="fas fa-file-invoice"></i> <?php echo lang('create_invoice'); ?></button>
-                            <button class="operation_button fix newcreate" id="close_order_button"><i class="fas fa-times-circle"></i> <?php echo lang('close_order'); ?></button>
+                            <button class="operation_button fix newcreate"  id="print_invoice"><i class="fas fa-file-invoice"></i> <?php echo lang('create_invoice'); ?></button>
+                            <button class="operation_button fix newmod" id="close_order_button"><i class="fas fa-times-circle"></i> <?php echo lang('close_order'); ?></button>
                         <?php } ?>
                         <?php if ($this->session->userdata('pre_or_post_payment') == "Post Payment") { ?>
                             <button class="operation_button fix newcancel" id="cancel_order_button"><i class="fas fa-ban"></i> <?php echo 'Cancelar Factura'; ?></button>
                         <?php } ?>
-                        <!-- button class="operation_button fix" id="kitchen_status_button"><i class="fas fa-spinner"></i> <?php echo lang('kitchen_status'); ?></button> -->
+                        <!-- <button class="operation_button fix" id="kitchen_status_button"><i class="fas fa-spinner"></i> <?php echo lang('kitchen_status'); ?></button> -->
                     </div>
                 </div>
             </div>
@@ -585,10 +587,10 @@ foreach ($notifications as $single_notification) {
                             <tr style="background-color:#F5F5F5;">
                                 <td></td>
                                 <!-- Hidden input Delivery Charge -->
-                                <!-- <td style="font-weight:bold;text-align:right;" colspan="3"><?php echo lang('delivery_charge'); ?></td> -->
-                                <td style="text-align:right;padding-right:10px;"><input type="hidden" name="" class="special_textbox" placeholder="Amt" id="delivery_charge" /></td>
+                                <td style="font-weight:bold;text-align:right;" colspan="3"><?php echo lang('delivery_charge'); ?></td>
+                                <td style="text-align:right;padding-right:10px;"><input type="" name="" class="special_textbox" placeholder="Amt" id="delivery_charge" /></td>
                             </tr>
-                            <tr style="background-color: black;height: 35px; color: white;">
+                            <tr style="background-color: #fba819;height: 35px; color: #000;">
                                 <td></td>
                                 <td style="font-weight:bold;text-align:right;" colspan="3"><?php echo lang('total_payable'); ?></td>
                                 <td style="font-weight:bold;text-align:right;padding-right:10px;"><?php echo $this->session->userdata('currency'); ?> <span id="total_payable">0.00</span></td>
@@ -646,7 +648,9 @@ foreach ($notifications as $single_notification) {
             <div class="section1 fix">
                 <div class="sec1_inside" id="sec1_1"><?php echo lang('quantity'); ?></div>
                 <div class="sec1_inside" id="sec1_2"><i class="fas fa-minus-circle" id="decrease_item_modal"></i> <span id="item_quantity_modal">1</span> <i class="fas fa-plus-circle" id="increase_item_modal"></i></div>
-                <div class="sec1_inside" id="sec1_3"><i class="fas fa-pencil-alt" id="edit_pricing" style="cursor:pointer;"></i><?php echo $this->session->userdata('currency'); ?> <span id="modal_item_price_variable" style="display:none;">0</span>
+                <div class="sec1_inside" id="sec1_3">
+                    <!-- <i class="fas fa-pencil-alt" id="edit_pricing" style="cursor:pointer;"></i> -->
+                <?php echo $this->session->userdata('currency'); ?> <span id="modal_item_price_variable" style="display:none;">0</span>
                 <span id="modal_item_price_variable_without_discount">0</span><span id="modal_discount_amount" style="display:none;">0</span></div>
             </div>
             <div class="section2 fix">
@@ -688,8 +692,8 @@ foreach ($notifications as $single_notification) {
                 <textarea name="item_note" id="modal_item_note" maxlength="50"></textarea>
             </div>
             <div class="section7 fix">
-                <div class="sec7_inside" id="sec7_1"><button id="close_item_modal"><?php echo lang('cancel'); ?></button></div>
-                <div class="sec7_inside" id="sec7_2"><button id="add_to_cart"><?php echo lang('add_to_cart'); ?></button></div>
+                <div class="sec7_inside" id="sec7_1"><button id="close_item_modal" style="background-color: #FF0000;"><?php echo lang('cancel'); ?></button></div>
+                <div class="sec7_inside" id="sec7_2"><button id="add_to_cart" style="background-color: #6ec100;"><?php echo "Añadir"; ?></button></div>
             </div>
             <!-- <span class="close">&times;</span> -->
             <!-- <p>Some text in the Modal..</p> -->
@@ -763,22 +767,22 @@ foreach ($notifications as $single_notification) {
     <div id="show_tables_modal2" class="modal">
         <!-- Modal content -->
         <div class="modal-content" id="modal_content_show_tables2">
-            <!-- <h1><?php echo lang('tables'); ?></h1>
-                <p id="new_or_order_number_table"><?php echo lang('order_number'); ?>: <span id="order_number_or_new_text"><?php echo lang('new'); ?></span></p> -->
-            <!-- <div class="select_table_modal_info_holder2 fix">
+             <h1><?php echo lang('tables'); ?></h1>
+                <p id="new_or_order_number_table"><?php echo lang('order_number'); ?>: <span id="order_number_or_new_text"><?php echo lang('new'); ?></span></p>
+             <div class="select_table_modal_info_holder2 fix">
                     <?php echo $tables_modal; ?>
-                </div> -->
+                </div>
             <div class="fix bottom_button_holder_table_modal">
                 <!-- <div class="left fix floatleft half">
                         <button id="please_read_table_modal_button"><i class="fas fa-question-circle"></i> <?php echo lang('please_read'); ?></button>
                     </div> -->
                 <div class="right fix floatleft half">
-                    <!-- <button class="floatright" id="submit_table_modal"><?php echo lang('submit'); ?></button> -->
+                    <button class="floatright" id="submit_table_modal"><?php echo lang('submit'); ?></button>
                     <button class="floatright" id="proceed_without_table_button"><?php echo 'Continuar en el Local'; ?></button>
-                    <!-- <button class="floatright" id="table_modal_cancel_button"><?php echo lang('cancel'); ?></button> -->
+                    <button class="floatright" id="table_modal_cancel_button"><?php echo lang('cancel'); ?></button>
                 </div>
             </div>
-            <!-- <span class="close">&times;</span> -->
+            <span class="close">&times;</span>
             <!-- <p>Some text in the Modal..</p> -->
         </div>
     </div>
@@ -1458,6 +1462,7 @@ foreach ($notifications as $single_notification) {
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/POS/js/custom.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/POS/js/items.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/POS/js/datable.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/POS/js/howler.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/POS/js/jquery.cookie.js"></script>
     <script type="text/javascript">
         $('.select2').select2();
@@ -1553,6 +1558,30 @@ foreach ($notifications as $single_notification) {
                 }
             });
         }
+    </script>
+    <script>
+        let soundBody = $("body");
+
+            let productSound = new Howl({
+            src: [base_url + "assets/media/access.mp3"],
+            });
+            let productSound2 = new Howl({
+            src: [base_url + "assets/media/click.mp3"],
+            });
+            soundBody.on("click", ".single_item", function () {
+            productSound.play();
+            });
+
+            soundBody.on("click", ".edit_item", function () {
+            productSound2.play();
+            });
+            soundBody.on("click", ".decrease_item_table", function () {
+            productSound2.play();
+            });
+            soundBody.on("click", ".increase_item_table", function () {
+            productSound2.play();
+            });
+
     </script>
 </body>
 </html>

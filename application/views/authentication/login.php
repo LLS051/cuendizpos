@@ -96,13 +96,16 @@
             .login-box-body{
                 border-radius: 10px;
                 border: 1px solid lightblue;
+                background: #ffffffad;
             }
             .login-page{
-                background: #000;
+                background: #3e2500;
+                background-repeat: no-repeat;
+                background-position: center;
             }
             .newbtn{
-                background-color: #ffD700;
-                border: #ffd705;
+                background-color: #fba819;
+                border: #fba819;
             }
         </style>
     </head>
@@ -115,7 +118,7 @@
             $end_date = ss_msg_end;
 
             if (($today >= $start_date) && ($today <= $end_date)) {
-                echo '<h1 style="text-align: center; color: #f39c12; font-weight: bold; text-shadow: 0px 0px 10px #fffdfd;">'. ss_msg .'</h1>';
+                echo '<h1 style="text-align: center; color: #462b01; font-weight: bold; text-shadow: 0px 0px 10px #fba819;">'. ss_msg .'</h1>';
             }
 
             ?>

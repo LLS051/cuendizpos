@@ -12,7 +12,7 @@ class Report extends CI_Controller {
         $this->load->model('Inventory_model');
         $this->load->library('form_validation');
         $this->Common_model->setDefaultTimezone();
-        
+
         if (!$this->session->has_userdata('user_id')) {
             redirect('Authentication/index');
         }
@@ -32,11 +32,11 @@ class Report extends CI_Controller {
     /* ----------------------Daily Summary Report-------------------------- */
 
     public function printDailySummaryReport($selectedDate = ''){
-        $data = array(); 
-        $data['result'] = $this->Report_model->dailySummaryReport($selectedDate);  
-        $data['selectedDate'] = $selectedDate; 
+        $data = array();
+        $data['result'] = $this->Report_model->dailySummaryReport($selectedDate);
+        $data['selectedDate'] = $selectedDate;
 
-        $this->load->view('report/printDailySummaryReport', $data); 
+        $this->load->view('report/printDailySummaryReport', $data);
     }
 
     public function dailySummaryReport() {
@@ -48,12 +48,12 @@ class Report extends CI_Controller {
             } else {
                 $selectedDate = '';
             }
-            $data['result'] = $this->Report_model->dailySummaryReport($selectedDate);  
+            $data['result'] = $this->Report_model->dailySummaryReport($selectedDate);
             $data['selectedDate'] = $selectedDate;
- 
+
         } else {
             $selectedDate = date("Y-m-d");
-            $data['result'] = $this->Report_model->dailySummaryReport($selectedDate);  
+            $data['result'] = $this->Report_model->dailySummaryReport($selectedDate);
             $data['selectedDate'] = $selectedDate;
         }
 
@@ -71,12 +71,12 @@ class Report extends CI_Controller {
             } else {
                 $selectedDate = '';
             }
-            $data['result'] = $this->Report_model->dailyConsumptionReport($selectedDate);  
+            $data['result'] = $this->Report_model->dailyConsumptionReport($selectedDate);
             $data['selectedDate'] = $selectedDate;
- 
+
         } else {
             $selectedDate = date("Y-m-d");
-            $data['result'] = $this->Report_model->dailyConsumptionReport($selectedDate);  
+            $data['result'] = $this->Report_model->dailyConsumptionReport($selectedDate);
             $data['selectedDate'] = $selectedDate;
         }
 
@@ -97,7 +97,7 @@ class Report extends CI_Controller {
                 $end_date = date('Y-m-d');
             }
             $user_id = $this->input->post('user_id');
-            
+
 
             $data['register_info'] = $this->Report_model->getRegisterInformation($start_date,$end_date,$user_id,$outlet_id);
             $data['start_date'] = $start_date;
@@ -217,15 +217,15 @@ class Report extends CI_Controller {
             $user_id = $this->input->post($this->security->xss_clean('user_id'));
             $data['user_id'] = $user_id;
             $data['saleReportByDate'] = $this->Report_model->saleReportByDate($start_date, $end_date, $user_id);
-        
+
         }
         $data['users'] = $this->Common_model->getAllByCompanyIdForDropdown($company_id, 'tbl_users');
         $data['main_content'] = $this->load->view('report/saleReportByDate', $data, TRUE);
-       
+
         $this->load->view('userHome', $data);
-    
+
     }
-    
+
 
     public function profitLossReport() {
         $data = array();
@@ -285,10 +285,10 @@ class Report extends CI_Controller {
         $company_id = $this->session->userdata('company_id');
         if ($this->input->post('submit')) {
             $start_date = $this->input->post($this->security->xss_clean('startDate'));
-            $end_date = $this->input->post($this->security->xss_clean('endDate'));  
+            $end_date = $this->input->post($this->security->xss_clean('endDate'));
             $data['start_date'] = $start_date;
             $data['end_date'] = $end_date;
-            $data['foodMenuSales'] = $this->Report_model->foodMenuSales($start_date, $end_date); 
+            $data['foodMenuSales'] = $this->Report_model->foodMenuSales($start_date, $end_date);
         }
         $data['main_content'] = $this->load->view('report/foodMenuSales', $data, TRUE);
         $this->load->view('userHome', $data);
@@ -300,12 +300,12 @@ class Report extends CI_Controller {
         if ($this->input->post('submit')) {
             // echo "<pre>";var_dump($this->input->post());echo "</pre>";
             $start_date = $this->input->post($this->security->xss_clean('startDate'));
-            $end_date = $this->input->post($this->security->xss_clean('endDate'));  
+            $end_date = $this->input->post($this->security->xss_clean('endDate'));
             $data['start_date'] = $start_date;
             $data['end_date'] = $end_date;
-            // $data['consumptionReport'] = $this->Report_model->consumptionReport($start_date, $end_date); 
+            // $data['consumptionReport'] = $this->Report_model->consumptionReport($start_date, $end_date);
             $data['consumptionMenus'] = $this->Report_model->consumptionMenus($start_date, $end_date);
-            $data['consumptionModifiers'] = $this->Report_model->consumptionModifiers($start_date, $end_date); 
+            $data['consumptionModifiers'] = $this->Report_model->consumptionModifiers($start_date, $end_date);
         }
         $data['main_content'] = $this->load->view('report/consumptionReport', $data, TRUE);
         $this->load->view('userHome', $data);
@@ -381,18 +381,18 @@ class Report extends CI_Controller {
         if ($this->input->post('submit')) {
             $start_date = $this->input->post($this->security->xss_clean('startDate'));
             $end_date = $this->input->post($this->security->xss_clean('endDate'));
-           
-            
+
+
             $data['start_date'] = $start_date;
             $data['end_date'] = $end_date;
-            
+
         }
-        
+
         $data['main_content'] = $this->load->view('report/purchaseReportByDate', $data, TRUE);
         $this->load->view('userHome', $data);
 
 
-        
+
     }
 
     public function purchaseReportByIngredient() {
@@ -470,11 +470,11 @@ class Report extends CI_Controller {
         $company_id = $this->session->userdata('company_id');
         if ($this->input->post('submit')) {
             $start_date = $this->input->post($this->security->xss_clean('startDate'));
-            $end_date = $this->input->post($this->security->xss_clean('endDate')); 
+            $end_date = $this->input->post($this->security->xss_clean('endDate'));
             $data['start_date'] = $start_date;
             $data['end_date'] = $end_date;
             $data['kitchenPerformanceReport'] = $this->Report_model->kitchenPerformanceReport($start_date, $end_date);
-        } 
+        }
         $data['main_content'] = $this->load->view('report/kitchenPerformanceReport', $data, TRUE);
         $this->load->view('userHome', $data);
     }
@@ -516,6 +516,6 @@ class Report extends CI_Controller {
         $data['employees'] = $this->Common_model->getAllByTable("tbl_users");
         $data['main_content'] = $this->load->view('report/attendanceReport', $data, TRUE);
         $this->load->view('userHome', $data);
-    }    
+    }
 
 }

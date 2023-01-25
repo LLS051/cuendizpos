@@ -26,7 +26,7 @@ class Report_model extends CI_Model {
         }
         $this->db->where('outlet_id', $outlet_id);
         $this->db->where("del_status", 'Live');
-        $purchases = $this->db->get()->result(); 
+        $purchases = $this->db->get()->result();
 
         //daily sales
         $this->db->select('*');
@@ -52,7 +52,7 @@ class Report_model extends CI_Model {
             $today = date('Y-m-d');
             $this->db->where('date =', $today);
         }
-        $this->db->where('outlet_id', $outlet_id); 
+        $this->db->where('outlet_id', $outlet_id);
         $this->db->where("del_status", 'Live');
         $supplier_due_payments = $this->db->get()->result();
 
@@ -65,9 +65,9 @@ class Report_model extends CI_Model {
             $today = date('Y-m-d');
             $this->db->where('only_date =', $today);
         }
-        $this->db->where('outlet_id', $outlet_id); 
+        $this->db->where('outlet_id', $outlet_id);
         $this->db->where("del_status", 'Live');
-        $customer_due_receives = $this->db->get()->result(); 
+        $customer_due_receives = $this->db->get()->result();
 
         //daily expenses
         $this->db->select('*');
@@ -78,7 +78,7 @@ class Report_model extends CI_Model {
             $today = date('Y-m-d');
             $this->db->where('date =', $today);
         }
-        $this->db->where('outlet_id', $outlet_id); 
+        $this->db->where('outlet_id', $outlet_id);
         $this->db->where("del_status", 'Live');
         $expenses = $this->db->get()->result();
 
@@ -91,7 +91,7 @@ class Report_model extends CI_Model {
             $today = date('Y-m-d');
             $this->db->where('date =', $today);
         }
-        $this->db->where('outlet_id', $outlet_id); 
+        $this->db->where('outlet_id', $outlet_id);
         $this->db->where("del_status", 'Live');
         $wastes = $this->db->get()->result();
 
@@ -101,8 +101,8 @@ class Report_model extends CI_Model {
         $result['supplier_due_payments'] = $supplier_due_payments;
         $result['customer_due_receives'] = $customer_due_receives;
         $result['expenses'] = $expenses;
-        $result['wastes'] = $wastes; 
-         
+        $result['wastes'] = $wastes;
+
         return $result;
     }
 
@@ -120,7 +120,7 @@ class Report_model extends CI_Model {
         }
         $this->db->where('outlet_id', $outlet_id);
         $this->db->where("del_status", 'Live');
-        $sale_consumptions_of_menu = $this->db->get()->result(); 
+        $sale_consumptions_of_menu = $this->db->get()->result();
 
         //daily sale consumption of menu's modifier
         $this->db->select('*');
@@ -134,12 +134,12 @@ class Report_model extends CI_Model {
         $this->db->where('outlet_id', $outlet_id);
         $this->db->where('order_status', 3);
         $this->db->where("del_status", 'Live');
-        $sale_consumption_of_menu_modifier = $this->db->get()->result(); 
+        $sale_consumption_of_menu_modifier = $this->db->get()->result();
 
         $result = array();
         $result['sale_consumptions_of_menu'] = $sale_consumptions_of_menu;
-        $result['sale_consumption_of_menu_modifier'] = $sale_consumption_of_menu_modifier; 
-         
+        $result['sale_consumption_of_menu_modifier'] = $sale_consumption_of_menu_modifier;
+
         return $result;
     }
 
@@ -283,7 +283,7 @@ class Report_model extends CI_Model {
         $company_id = $this->session->userdata('company_id');
 
         if ($food_id != "") {
-            $result = $this->db->query("SELECT ing.*, (select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.ingredient_id AND outlet_id=$outlet_id AND del_status='Live') total_purchase, 
+            $result = $this->db->query("SELECT ing.*, (select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.ingredient_id AND outlet_id=$outlet_id AND del_status='Live') total_purchase,
 (select SUM(consumption) from tbl_sale_consumptions_of_menus where ingredient_id=i.ingredient_id AND outlet_id=$outlet_id AND  del_status='Live') total_consumption,
 (select SUM(consumption) from tbl_sale_consumptions_of_modifiers_of_menus where ingredient_id=i.ingredient_id AND outlet_id=$outlet_id AND  del_status='Live') total_modifiers_consumption,
 (select SUM(waste_amount) from tbl_waste_ingredients  where ingredient_id=i.ingredient_id AND outlet_id=$outlet_id AND  tbl_waste_ingredients.del_status='Live') total_waste,
@@ -295,7 +295,7 @@ FROM tbl_food_menus_ingredients i LEFT JOIN tbl_ingredients ing ON ing.id = i.in
             return $result;
         } else {
             if ($category_id == "" && $ingredient_id == "") {
-                $result = $this->db->query("SELECT i.*,(select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_purchase, 
+                $result = $this->db->query("SELECT i.*,(select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_purchase,
 (select SUM(consumption) from tbl_sale_consumptions_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_consumption,
 (select SUM(consumption) from tbl_sale_consumptions_of_modifiers_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND  del_status='Live') total_modifiers_consumption,
 (select SUM(waste_amount) from tbl_waste_ingredients  where ingredient_id=i.id AND outlet_id=$outlet_id AND tbl_waste_ingredients.del_status='Live') total_waste,
@@ -307,7 +307,7 @@ FROM tbl_ingredients i WHERE i.del_status='Live' AND i.company_id= '$company_id'
                 return $result;
             } else {
                 if ($ingredient_id == "" && $category_id != "") {
-                    $result = $this->db->query("SELECT i.*,(select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_purchase, 
+                    $result = $this->db->query("SELECT i.*,(select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_purchase,
 (select SUM(consumption) from tbl_sale_consumptions_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_consumption,
 (select SUM(consumption) from tbl_sale_consumptions_of_modifiers_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND  del_status='Live') total_modifiers_consumption,
 (select SUM(waste_amount) from tbl_waste_ingredients  where ingredient_id=i.id AND outlet_id=$outlet_id AND tbl_waste_ingredients.del_status='Live') total_waste,
@@ -318,7 +318,7 @@ FROM tbl_ingredients i WHERE i.del_status='Live' AND i.company_id= '$company_id'
 FROM tbl_ingredients i WHERE i.category_id='$category_id' AND i.del_status='Live' AND i.company_id= '$company_id' ORDER BY i.name ASC")->result();
                     return $result;
                 } else {
-                    $result = $this->db->query("SELECT i.*, (select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_purchase, 
+                    $result = $this->db->query("SELECT i.*, (select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_purchase,
 (select SUM(consumption) from tbl_sale_consumptions_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND del_status='Live') total_consumption,
 (select SUM(consumption) from tbl_sale_consumptions_of_modifiers_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND  del_status='Live') total_modifiers_consumption,
 (select SUM(waste_amount) from tbl_waste_ingredients  where ingredient_id=i.id AND outlet_id=$outlet_id AND tbl_waste_ingredients.del_status='Live') total_waste,
@@ -337,7 +337,7 @@ FROM tbl_ingredients i WHERE i.id='$ingredient_id' AND i.company_id= '$company_i
         $outlet_id = $this->session->userdata('outlet_id');
         $company_id = $this->session->userdata('company_id');
 
-        $result = $this->db->query("SELECT i.*,(select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id='$outlet_id' AND del_status='Live') total_purchase, 
+        $result = $this->db->query("SELECT i.*,(select SUM(quantity_amount) from tbl_purchase_ingredients where ingredient_id=i.id AND outlet_id='$outlet_id' AND del_status='Live') total_purchase,
 (select SUM(consumption) from tbl_sale_consumptions_of_menus where ingredient_id=i.id AND outlet_id='$outlet_id' AND del_status='Live') total_consumption,
 (select SUM(consumption) from tbl_sale_consumptions_of_modifiers_of_menus where ingredient_id=i.id AND outlet_id=$outlet_id AND  del_status='Live') total_modifiers_consumption,
 (select SUM(waste_amount) from tbl_waste_ingredients where ingredient_id=i.id AND outlet_id='$outlet_id' AND del_status='Live') total_waste,
@@ -411,7 +411,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             $outlet_id = $this->session->userdata('outlet_id');
             $this->db->select('sale_date,sum(paid_amount) as total_payable,sum(due_amount) as due_total,sum(total_payable) as total_sum_paiddue');
             $this->db->from('tbl_sales');
-            
+
 
             if ($startDate != '' && $endDate != '') {
                 $this->db->where('sale_date>=', $startDate);
@@ -427,7 +427,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             if ($user_id != '') {
                 $this->db->where('user_id', $user_id);
             }
-            
+
             $this->db->where('outlet_id', $outlet_id);
             $this->db->group_by('date(sale_date)');
             $this->db->where('del_status', "Live");
@@ -550,7 +550,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             //end Supplier payment report
             $allTotal = 0;
             $allTotal = $purchase[0]->total_purchase_amount + $sales[0]->total_sales_amount + $waste[0]->total_loss_amount + $expense[0]->expense_amount /*+ $supplier_payment[0]->supplier_payment_amount*/;
-            
+
         $gross_profit = (($sales[0]->total_sales_amount + $customer_receive[0]->customer_receive_amount) - ($purchase[0]->total_purchase_amount + $waste[0]->total_loss_amount + $expense[0]->expense_amount /*+ $supplier_payment[0]->supplier_payment_amount*/));
 
             $net_profit = (($sales[0]->total_sales_amount + $customer_receive[0]->customer_receive_amount) - ($purchase[0]->total_purchase_amount + $waste[0]->total_loss_amount + $expense[0]->expense_amount /*+ $supplier_payment[0]->supplier_payment_amount*/) - $sales[0]->total_sales_vat);
@@ -699,7 +699,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             }
             if ($startMonth == '' && $endMonth != '') {
                 $this->db->where('sale_date', $endMonth);
-            } 
+            }
             $this->db->where('tbl_sales_details.outlet_id', $outlet_id);
             $this->db->where('tbl_sales_details.del_status', 'Live');
             $this->db->order_by('code', 'ASC');
@@ -727,7 +727,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             }
             if ($start_date == '' && $end_date != '') {
                 $this->db->where('sale_date', $end_date);
-            } 
+            }
             $this->db->where('tbl_sales.outlet_id', $outlet_id);
             $this->db->where('tbl_sales.del_status', 'Live');
             $this->db->order_by('tbl_ingredients.name', 'ASC');
@@ -756,7 +756,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             }
             if ($start_date == '' && $end_date != '') {
                 $this->db->where('sale_date', $end_date);
-            } 
+            }
             $this->db->where('tbl_sale_consumptions_of_menus.outlet_id', $outlet_id);
             $this->db->where('tbl_sale_consumptions_of_menus.del_status', 'Live');
             $this->db->order_by('tbl_ingredients.name', 'ASC');
@@ -784,7 +784,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             }
             if ($start_date == '' && $end_date != '') {
                 $this->db->where('sale_date', $end_date);
-            } 
+            }
             $this->db->where('tbl_sales.outlet_id', $outlet_id);
             $this->db->where('tbl_sales.del_status', 'Live');
             $this->db->order_by('tbl_ingredients.name', 'ASC');
@@ -798,7 +798,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
     public function detailedSaleReport($startMonth = '', $endMonth = '', $user_id = '') {
         if ($startMonth || $endMonth || $user_id):
             $outlet_id = $this->session->userdata('outlet_id');
-            $this->db->select('tbl_sales.*,tbl_users.full_name,tbl_payment_methods.name');
+            $this->db->select('tbl_sales.*,tbl_users.full_name as full, tbl_payment_methods.name');
             $this->db->from('tbl_sales');
             $this->db->join('tbl_users', 'tbl_users.id = tbl_sales.user_id', 'left');
             $this->db->join('tbl_payment_methods', 'tbl_payment_methods.id = tbl_sales.payment_method_id', 'left');
@@ -816,6 +816,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
 
             if ($user_id != '') {
                 $this->db->where('tbl_sales.user_id', $user_id);
+
             }
             $this->db->where('tbl_sales.outlet_id', $outlet_id);
             $this->db->where('tbl_sales.del_status', 'Live');
@@ -999,7 +1000,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
         $this->db->where('tbl_purchase.del_status', 'Live');
         $this->db->group_by('tbl_purchase.supplier_id');
         return $this->db->get()->result();
-    } 
+    }
 
     public function customerDueReport() {
         $outlet_id = $this->session->userdata('outlet_id');
@@ -1012,7 +1013,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
         $this->db->where("payment_method_id", 5);
         $this->db->group_by('tbl_sales.customer_id');
         return $this->db->get()->result();
-    } 
+    }
 
     public function getRegisterInformation($start_date,$end_date,$user_id,$outlet_id){
         $this->db->select("tbl_register.*,tbl_users.full_name as user_name");
@@ -1023,7 +1024,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
         $this->db->where("DATE(tbl_register.opening_balance_date_time)>=", $start_date);
         $this->db->where("DATE(tbl_register.opening_balance_date_time)<=", $end_date);
         $this->db->order_by('tbl_register.id', 'DESC');
-        return $this->db->get()->result();        
+        return $this->db->get()->result();
     }
 
     public function getUsers($outlet_id){
@@ -1068,7 +1069,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
         if($start_date || $end_date):
         $outlet_id = $this->session->userdata('outlet_id');
         $this->db->select('*');
-        $this->db->from('tbl_sales'); 
+        $this->db->from('tbl_sales');
 
         if($start_date!='' && $end_date!=''){
             $this->db->where('sale_date>=', $start_date);
@@ -1086,7 +1087,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
         $this->db->where('tbl_sales.order_status','3');
         $this->db->order_by('id', 'DESC');
         $query_result = $this->db->get();
-        $result = $query_result->result(); 
+        $result = $query_result->result();
         return $result;
         endif;
     }
@@ -1097,7 +1098,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             $outlet_id = $this->session->userdata('outlet_id');
             $this->db->select('tbl_attendance.*, emp.full_name as employee_name');
             $this->db->from('tbl_attendance');
-            $this->db->join('tbl_users as emp', 'emp.id = tbl_attendance.employee_id', 'left'); 
+            $this->db->join('tbl_users as emp', 'emp.id = tbl_attendance.employee_id', 'left');
 
             if ($start_date != '' && $end_date != '') {
                 $this->db->where('date>=', $start_date);
@@ -1112,7 +1113,7 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
 
             if ($employee_id != '') {
                 $this->db->where('tbl_attendance.employee_id', $employee_id);
-            } 
+            }
 
             $this->db->where('tbl_attendance.del_status', 'Live');
             $this->db->order_by('date', 'ASC');
@@ -1127,8 +1128,8 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             $outlet_id = $this->session->userdata('outlet_id');
             $this->db->select('sale_date,sum(paid_amount) as total1,sum(due_amount) as due1,sum(total_payable) as c_sum_paid');
             $this->db->from('tbl_sales');
-            
-    
+
+
             if ($startDate != '' && $endDate != '') {
                 $this->db->where('sale_date>=', $startDate);
                 $this->db->where('sale_date <=', $endDate);
@@ -1139,15 +1140,15 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
             if ($startDate == '' && $endDate != '') {
                 $this->db->where('sale_date', $endDate);
             }
-    
+
             if ($user_id != '') {
                 $this->db->where('user_id', $user_id);
             }
-            
+
             $this->db->where('outlet_id', $outlet_id);
             $this->db->group_by('date(sale_date)');
             $this->db->where('del_status', "Live");
-            
+
             $this->db->where("payment_method_id", 3);
             $query_result = $this->db->get();
             $result = $query_result->result();
@@ -1155,5 +1156,3 @@ FROM tbl_ingredients i WHERE del_status='Live' AND i.company_id= '$company_id'  
         endif;
     }
 }
-
-    

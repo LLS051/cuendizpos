@@ -4,7 +4,7 @@
  */
 .skin-blue .main-header .navbar {
 
-    background-color: #FFD700;
+    background-color: #fba819;
 }
 .skin-blue .main-header .navbar .nav > li > a {
   /*color: #ffffff;*/
@@ -54,25 +54,26 @@ font-weight: bold !important;
 }
 .skin-blue .main-header .logo {
   /*background-color: #367fa9;*/
-  background-color:#000000;
+  background-color:#626201 ;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 .skin-blue .main-header .logo:hover {
   /*background-color: #357ca5;*/
-  background-color:#000000 !important;
+  background-color:#626201  !important;
 }
 .skin-blue .main-header li.user-header {
   background-color: #000;
 }
 .skin-blue .content-header {
   background: transparent;
+  color: #fba819;
 }
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
   /*background-color: #222d32;*/
-  background-color:#000000 !important;
+  background-color:#626201  !important;
 }
 .skin-blue .user-panel > .info,
 .skin-blue .user-panel > .info > a {
@@ -81,8 +82,8 @@ font-weight: bold !important;
 .skin-blue .sidebar-menu > li.header {
   /*color: #4b646f;*/
   /*background: #1a2226;*/
-  color:#999;
-  background:#000000 !important;
+  color:#fff;
+  background:#626201  !important;
   font-size: 14px;
   font-weight: bolder;
 }
@@ -92,16 +93,16 @@ font-weight: bold !important;
 .skin-blue .sidebar-menu > li:hover > a,
 .skin-blue .sidebar-menu > li.active > a,
 .skin-blue .sidebar-menu > li.menu-open > a {
-  color: #ffffff;
+  /* color: #3e2400; */
   /*background: #1e282c;*/
-  background:#000000;
+  background:#3e2400;
 }
 .skin-blue .sidebar-menu > li.active > a {
   border-left-color: #000000;
 }
 .skin-blue .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
-  background: #000000;
+  background: #3e2400
 }
 .skin-blue .sidebar a {
   /*color: #b8c7ce;*/
@@ -111,7 +112,7 @@ font-weight: bold !important;
   text-decoration: none;
 }
 .skin-blue .sidebar-menu .treeview-menu > li > a {
-  color: #8aa4af;
+  color: #fba819;
 }
 .skin-blue .sidebar-menu .treeview-menu > li.active > a,
 .skin-blue .sidebar-menu .treeview-menu > li > a:hover {

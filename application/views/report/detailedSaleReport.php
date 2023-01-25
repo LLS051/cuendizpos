@@ -41,7 +41,7 @@
         </div>
         <div class="hidden-lg">
             <div class="clearfix"></div>
-        </div> 
+        </div>
     </div>
 </section>
 <style type="text/css">
@@ -96,6 +96,7 @@
                                 <th style="width: 2%;text-align: center"><?php echo lang('sn'); ?></th>
                                 <th><?php echo lang('date'); ?></th>
                                 <th><?php echo lang('reference'); ?></th>
+                                <th><?php echo 'Trabajador' ?></th>
                                 <th><?php echo lang('total_items'); ?></th>
                                 <th><?php echo lang('subtotal'); ?></th>
                                 <th><?php echo lang('total_discount'); ?></th>
@@ -123,7 +124,7 @@
                                     $disGrandTotal+=$value->total_discount_amount;
                                     $vatGrandTotal+=$value->vat;
                                     $key++;
-                                    
+
                                     ?>
                                     <?php
                                     if($value->name === 'Credito'){
@@ -138,12 +139,13 @@
                                     elseif($value->name === 'Tarjeta de Credito/Debito'){
                                         $color = '';
                                     }
-                                    
-                                    ?> 
+
+                                    ?>
                                     <tr style ='background-color:<?php echo $color?>'>
                                         <td style="text-align: center"><?php echo $key; ?></td>
                                         <td><?= date($this->session->userdata('date_format'), strtotime($value->sale_date)) ?></td>
                                         <td><?php echo $value->sale_no ?></td>
+                                        <td><?php echo userName($value->waiter_id) ?></td>
                                         <td><?php echo $value->total_items ?></td>
                                         <td><?php echo $value->sub_total ?></td>
                                         <td><?php echo $value->total_discount_amount ?></td>
@@ -152,7 +154,7 @@
                                         <td><?php echo $value->vat ?></td>
                                         <td style ='background-color:<?php echo $color?>'><?php echo $value->total_payable ?></td>
                                         <td style ='background-color:<?php echo $color?>'><?php echo $value->name ?></td>
-                                        
+
                                     </tr>
                                     <?php
                                 }
@@ -163,6 +165,7 @@
                         <th style="width: 2%;text-align: center"></th>
                         <th></th>
                         <th style="text-align: right"><?php echo lang('total'); ?> </th>
+                        <th></th>
                         <th><?= $itemsGrandTotal ?></th>
                         <th><?= number_format($subGrandTotal, 2) ?></th>
                         <th><?= number_format($disGrandTotal, 2) ?></th>
@@ -178,7 +181,7 @@
             </div>
         </div>
     </div>
-</section>   
+</section>
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -188,19 +191,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script> 
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 
-<script>  
+<script>
     var jqry = $.noConflict();
     jqry(document).ready(function(){
 
-    var TITLE = "<?php echo lang('detailed_sale_report'); ?> "+today; 
+    var TITLE = "<?php echo lang('detailed_sale_report'); ?> "+today;
 
     jqry('#datatable').DataTable( {
-        
+
         'autoWidth'   : true,
         'ordering'    : true,
         dom: 'Bfrtip',
@@ -208,7 +211,7 @@
             [ 10, 25, 50, -1 ],
             [ '10 rows', '25 rows', '50 rows', 'Show all' ]
         ],
-        buttons: [ 
+        buttons: [
             {
                 extend: 'print',
                 title: TITLE
@@ -229,4 +232,4 @@
         ]
     } );
 } );
-</script> 
+</script>

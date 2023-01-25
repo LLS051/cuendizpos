@@ -1,4 +1,4 @@
-<?php 
+<?php
     $notification_number = 0;
     if(count($notifications)>0){
         $notification_number = count($notifications);
@@ -20,16 +20,16 @@ foreach ($notifications as $single_notification){
     $notification_list_show .= '<button class="single_serve_b" id="notification_serve_button_'.$single_notification->id.'">Delete</button>';
     $notification_list_show .= '</div>';
     $notification_list_show .= '</div>';
-    
+
 }
 
 /************************************************************************************************************************
  * End of Construct notification list ***********************************************************************************
  * **********************************************************************************************************************
- */ 
+ */
     $show_all_orders = '';
     if(count($getUnReadyOrders)>0){
-        
+
         foreach($getUnReadyOrders as $singleOrder){
             if($singleOrder->order_type==1){
                 $order_type = "Comer aca";
@@ -51,7 +51,7 @@ foreach ($notifications as $single_notification){
                         $tables_booked .= $single_table_booked->table_name.', ';
                     }
                     $w++;
-                }    
+                }
             }else{
                 $tables_booked = 'None';
             }
@@ -63,7 +63,7 @@ foreach ($notifications as $single_notification){
             $total_kitchen_type_items = $singleOrder->total_kitchen_type_items;
             $total_kitchen_type_started_cooking_items = $singleOrder->total_kitchen_type_started_cooking_items;
             $total_kitchen_type_done_items = $singleOrder->total_kitchen_type_done_items;
-            $selected_unselected = "unselected"; 
+            $selected_unselected = "unselected";
 
             if($total_kitchen_type_items!=$total_kitchen_type_done_items){
                 $show_all_orders .= '<div class="fix floatleft single_order" data-order-type="'.$order_type.'" data-selected="'.$selected_unselected.'" id="single_order_'.$singleOrder->sale_id.'">';
@@ -114,13 +114,13 @@ foreach ($notifications as $single_notification){
                                        }else{
                                             $modifiers_name .= $single_modifier->name.', ';
                                        }
-                                       $w++; 
+                                       $w++;
                                     }
                                     if($modifiers_length>0){
-                                        $show_all_orders .= '<p class="modifiers" style="'.$font_style.'">- '.$modifiers_name.'</p>';    
+                                        $show_all_orders .= '<p class="modifiers" style="'.$font_style.'">- '.$modifiers_name.'</p>';
                                     }
                                     if($single_item->menu_note!=""){
-                                        $show_all_orders .= '<p class="note" style="'.$font_style.'">- '.$single_item->menu_note.'</p>';    
+                                        $show_all_orders .= '<p class="note" style="'.$font_style.'">- '.$single_item->menu_note.'</p>';
                                     }
                                 $show_all_orders .= '</div>';
                             $show_all_orders .= '</div>';
@@ -129,10 +129,10 @@ foreach ($notifications as $single_notification){
                             $show_all_orders .= '</div>';
                         $show_all_orders .= '</div>';
                     }
-                    
+
                     $show_all_orders .= '</div>';
                     $show_all_orders .= '<div class="single_order_button_holder" id="single_order_button_holder_'.$singleOrder->sale_id.'">';
-                        $show_all_orders .= '<button class="select_all_of_an_order" id="select_all_of_an_order_'.$singleOrder->sale_id.'">'.lang('select_all').'</button><button class="unselect_all_of_an_order" id="unselect_all_of_an_order_'.$singleOrder->sale_id.'">'.lang('unselect_all').'</button><button class="start_cooking_button" id="start_cooking_button_'.$singleOrder->sale_id.'">'.lang('cook').'</button><button class="done_cooking" id="done_cooking_'.$singleOrder->sale_id.'">'.lang('done').'</button>';    
+                        $show_all_orders .= '<button class="select_all_of_an_order" id="select_all_of_an_order_'.$singleOrder->sale_id.'">'.lang('select_all').'</button><button class="unselect_all_of_an_order" id="unselect_all_of_an_order_'.$singleOrder->sale_id.'">'.lang('unselect_all').'</button><button class="start_cooking_button" id="start_cooking_button_'.$singleOrder->sale_id.'">'.lang('cook').'</button><button class="done_cooking" id="done_cooking_'.$singleOrder->sale_id.'">'.lang('done').'</button>';
                     $show_all_orders .= '</div>';
                 $show_all_orders .= '</div>';
             }
@@ -152,7 +152,7 @@ foreach ($notifications as $single_notification){
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/kitchen_panel/css/kitchen_new_style.css">
         <link href="https://fonts.googleapis.com/css?family=Yantramanav" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
-        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/kitchen_panel/css/sweetalert2.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/select2/dist/css/select2.min.css">
         <link rel="stylesheet" href="<?php echo base_url(); ?>asset/plugins/iCheck/minimal/color-scheme.css">
@@ -176,19 +176,19 @@ foreach ($notifications as $single_notification){
             #language{
                 display: inline-block;width: 20%; margin:10px 10px 0px 0px;float:right;
             }
-        </style> 
+        </style>
     </head>
     <body>
         <input type="hidden" id="csrf_name_" value="<?php echo $this->security->get_csrf_token_name(); ?>">
         <input type="hidden" id="csrf_value_" value="<?php echo $this->security->get_csrf_hash(); ?>">
-        
+
         <span style="display:none" id="selected_order_for_refreshing_help"></span>
         <span style="display:none" id="refresh_it_or_not"><?php echo lang('yes'); ?></span>
         <div class="wrapper fix">
             <div class="fix main_top">
                 <div class="fix floatleft top_header"><h1><?php echo lang('kitchen_panel'); ?></h1></div>
                 <div class="fix floatleft top_menu">
-                    
+
                     <a href="<?php echo base_url(); ?>Authentication/logOut" id="logout_button"><i class="fas fa-sign-out-alt"></i> <?php echo lang('logout'); ?></a>
                     <button id="help_button"><i class="fas fa-question-circle"></i> <?php echo lang('help'); ?></button>
                     <button id="notification_button"><i class="fas fa-bell"></i> <?php echo lang('notification'); ?> (<span id="notification_counter"><?php echo $notification_number; ?></span>)</button>
@@ -197,30 +197,30 @@ foreach ($notifications as $single_notification){
                     <a href="<?php echo base_url(); ?>Authentication/userProfile" id="logout_button"><i class="fas fas-caret-square-left"></i><?php echo lang('back'); ?></a>
                     <?php $language=$this->session->userdata('language'); ?>
                     <?php echo form_open(base_url() . 'Authentication/setlanguage', $arrayName = array('id' => 'language')) ?>
-                                <select tabindex="2" class="form-control select2" name="language" style="width: 100%;" onchange='this.form.submit()'> 
-                                    <option value="english" 
+                                <select tabindex="2" class="form-control select2" name="language" style="width: 100%;" onchange='this.form.submit()'>
+                                    <option value="english"
                                     <?php if(isset($language)){
-                                    if ($language == 'english') 
+                                    if ($language == 'english')
                                         echo "selected";
-                                    }  
+                                    }
                                     ?>>English</option>
-                                    <option value="spanish" 
+                                    <option value="spanish"
                                     <?php if(isset($language)){
-                                    if ($language == 'spanish') 
+                                    if ($language == 'spanish')
                                         echo "selected";
-                                    }  
+                                    }
                                     ?>>Spanish</option>
-                                    <option value="french" 
+                                    <option value="french"
                                     <?php if(isset($language)){
-                                    if ($language == 'french') 
+                                    if ($language == 'french')
                                         echo "selected";
-                                    }  
+                                    }
                                     ?>>French</option>
-                                    <option value="arabic" 
+                                    <option value="arabic"
                                     <?php if(isset($language)){
-                                    if ($language == 'arabic') 
+                                    if ($language == 'arabic')
                                         echo "selected";
-                                    }  
+                                    }
                                     ?>>Arabic</option>
                                 </select>
                             </form>
@@ -229,13 +229,13 @@ foreach ($notifications as $single_notification){
 
             <div class="fix main_bottom">
                 <div class="fix order_holder" id="order_holder">
-                    <?php echo $show_all_orders ?>                    
+                    <?php echo $show_all_orders ?>
                 </div>
 
             </div>
 
         </div>
-        
+
     <!-- The Modal -->
     <div id="help_modal" class="modal">
 
@@ -246,7 +246,7 @@ foreach ($notifications as $single_notification){
             <h1 class="main_header"><?php echo lang('help'); ?></h1>
             <p class="help_content">
                 <?php echo lang('kitchen_help_text_first_para'); ?> </br>
-               <?php echo lang('kitchen_help_text_second_para'); ?><br/> 
+               <?php echo lang('kitchen_help_text_second_para'); ?><br/>
                 <?php echo lang('kitchen_help_text_third_para'); ?>
             </p>
         </div>
@@ -268,12 +268,12 @@ foreach ($notifications as $single_notification){
                     <div class="fix single_notification"><strong><?php echo lang('select_all'); ?></strong></div>
                     <div class="fix single_serve_button">
                     </div>
-                </div>    
+                </div>
             </div>
 
 
             <div id="notification_list_holder" class="fix">
-                
+
                 <?php echo $notification_list_show;?>
             </div>
             <!-- <span class="close">&times;</span> -->
@@ -289,15 +289,16 @@ foreach ($notifications as $single_notification){
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/kitchen_panel/js/datable.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/kitchen_panel/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/kitchen_panel/js/custom.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/POS/js/howler.min.js"></script>
     <script type="text/javascript">
             $('.select2').select2();
-            
+
             $.datable();
             $(document).ready(function(){
-                
+
             });
             function searchItems(searchedValue){
-                
+
                 var resultObject = search(searchedValue, window.order_items);
                 return resultObject;
             }
@@ -306,14 +307,19 @@ foreach ($notifications as $single_notification){
                 for (var i=0; i < myArray.length; i++) {
                     if (myArray[i].menu_name.toLowerCase().includes(nameKey.toLowerCase())) {
                         foundResult.push(myArray[i]);
-                        
+
                     }
                 }
                 return foundResult.sort( function(a, b) {
                   return parseInt(b.sold_for)-parseInt(a.sold_for);
                 });
-                
+
             }
+        </script>
+        <script>
+            let bell_new_order = new Howl({
+                src: [base_url + "assets/media/kitchen_bell.mp3"],
+            });
         </script>
     </body>
 </html>

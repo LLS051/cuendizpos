@@ -851,6 +851,10 @@ class Sale extends CI_Controller {
         $data['sale_object'] = $this->get_all_information_of_a_sale($sale_id);
         $this->load->view('sale/print_invoice',$data);
     }
+    function print_bill($sale_id){
+        $data['sale_object'] = $this->get_all_information_of_a_sale($sale_id);
+        $this->load->view('sale/print_bill',$data);
+    }
     function get_new_hold_number_ajax(){
         $outlet_id = $this->session->userdata('outlet_id');
         $user_id = $this->session->userdata('user_id');
