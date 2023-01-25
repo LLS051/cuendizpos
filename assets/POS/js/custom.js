@@ -1381,7 +1381,7 @@ $(document).ready(function(){
 				$('.single_table_div[data-table-checked=checked]').attr('data-table-checked','unchecked');
 				$("#select_waiter").val('').trigger('change');
 				$("#walk_in_customer").val('').trigger('change');
-				$('#place_edit_order').html('Place Order');
+				$('#place_edit_order').html('Realizar Pedido');
 			}
 		}
 	});
@@ -3989,8 +3989,8 @@ function set_new_orders_to_view(){
 			        tables_booked = 'None';
 			    }
 
-				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;text-align:left;width: 125px;float: left;">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-				$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;text-align:left;width: 125px;float: left;">Factura: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
+				$order_list_left += '<br> <p>Mesa: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 				$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 				$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 				$order_list_left += '</div>';
@@ -4106,8 +4106,8 @@ function set_new_orders_to_view_and_select_last_one(){
 			        tables_booked = 'None';
 			    }
 
-				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;text-align:left;width: 125px;float: left;">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-				$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;text-align:left;width: 125px;float: left;">Factura: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
+				$order_list_left += '<br> <p>Mesa: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 				$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 				$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 				$order_list_left += '</div>';
@@ -4210,8 +4210,8 @@ function set_new_orders_to_view_for_interval(){
 			        tables_booked = 'None';
 			    }
 
-				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;font-weight: bold;text-align:left;width:125px;float:left">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-				$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+				$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;font-weight: bold;text-align:left;width:125px;float:left">Factura: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
+				$order_list_left += '<br> <p>Mesa: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 				$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 				$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 				$order_list_left += '</div>';
@@ -4239,7 +4239,7 @@ function reset_customer_waiter_to_default(){
 	var wid = $('#select_waiter > option:contains("Default Waiter")').attr('value');
 	$("#walk_in_customer").val(cid).trigger("change");
 	$("#select_waiter").val(wid).trigger('change');
-	$('#place_edit_order').html('Place Order');
+	$('#place_edit_order').html('Realizar Pedido');
 }
 function print_kot(sale_id){
 	let newWindow = open("print_kot/"+sale_id, 'Print KOT', 'width=450,height=550')
@@ -4817,7 +4817,7 @@ function get_details_of_a_particular_order_for_modal(sale_id){
 }
 
 function get_details_of_a_particular_order(sale_id){
-	$('#place_edit_order').html('Update Order');
+	$('#place_edit_order').html('Actualizar Orden');
 	$.ajax({
 		url:base_url+"Sale/get_all_information_of_a_sale_ajax",
 		method:"POST",
@@ -4978,8 +4978,8 @@ function cancel_order(sale_id){
 						var table_name = (response[key].table_name!=null)?response[key].table_name:"";
 						var waiter_name = (response[key].waiter_name!=null)?response[key].waiter_name:"";
 						var customer_name = (response[key].customer_name!=null)?response[key].customer_name:"";
-						$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;font-weight: bold;text-align:left;width:125px;float:left;">Order: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
-						$order_list_left += '<br> <p>Table: <span class="running_order_table_name">'+tables_booked+'</span></p>';
+						$order_list_left += '<span id="open_orders_order_status_'+response[key].sales_id+'" style="display:none;">'+response[key].order_status+'</span><p style="font-size: 16px;font-weight: bold;text-align:left;width:125px;float:left;">Factura: <span class="running_order_order_number">'+order_name+'</span></p><img src="'+base_url+'assets/images/right-arrow.png" style="float: right;width: 13px;margin: 2px;transition: .25s ease-out;" class="running_order_right_arrow" id="running_order_right_arrow_'+response[key].sales_id+'">';
+						$order_list_left += '<br> <p>Mesa: <span class="running_order_table_name">'+tables_booked+'</span></p>';
 						$order_list_left += '<p>Trabajador: <span class="running_order_waiter_name">'+waiter_name+'</span></p>';
 						$order_list_left += '<p>Cliente: <span class="running_order_customer_name">'+customer_name+'</span></p>';
 						$order_list_left += '</div>';

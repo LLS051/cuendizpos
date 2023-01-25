@@ -181,8 +181,9 @@
                 <div class="box box-info">
                     <div class="box-header">
                         <i class="fa fa-shopping-bag"></i>
-                        <h3 class="box-title newh3" style="color: #DD4B39!important;"><?php echo "Local"; ?></h3>
-                        <h3 class="box-title newh3" style="color: #FFD133!important;">/<?php echo lang('take_away'); ?></h3> /<h3 class="box-title newh3" style="color: #33FF39!important;"><?php echo lang('delivery'); ?></h3>
+                        <h3 class="box-title newh3" style="color: #ffd700!important;"><?php echo "Local"; ?></h3>
+                        <h3 class="box-title newh3" style="color: #3e0085!important;">/<?php echo lang('take_away'); ?></h3> /
+                        <h3 class="box-title newh3" style="color: #33FF39!important;"><?php echo lang('delivery'); ?></h3>
                         <h3 class="box-title">(<?php echo lang('this_month'); ?>)</h3>
                         <!-- <span id="date_range_dtd" style="padding-left: 15px;"><?php echo date('Y-m-01'); ?> to <?php echo date('Y-m-t'); ?> </span><span style="float: right;"><a href=""><i class="fa fa-calendar"></i></a></span> -->
 
@@ -623,7 +624,7 @@
                 value: <?php echo $dinein_count->dinein_count; ?>,
                 color: '#ffD700',
                 highlight: '#ffD700',
-                label: 'Local'
+                label: 'En Local'
             },
             {
                 value: <?php echo $take_away_count->take_away_count; ?>,

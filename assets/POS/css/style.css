@@ -168,7 +168,6 @@ flex-direction: column;
         padding: 0px 10px;
     }
     .specific_category_items_holder{
-        display: none  !important;
         grid-template-columns: 1fr 1fr !important ;
         grid-gap: 10px;
         width: 100%;

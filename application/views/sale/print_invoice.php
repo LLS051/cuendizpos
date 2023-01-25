@@ -37,9 +37,9 @@
 
                 <div id="receipt-data">
                     <div class="text-center">
-                    <img src="<?php echo ss_location . ss_print_logo; ?>" alt="cuendizrestaurant" width="auto" height="80">
+                    <img src="<?php echo ss_location . ss_print_logo; ?>" alt="cuendizrestaurant" width="auto" height="100">
                         <h4>
-                            <?php echo $this->session->userdata('outlet_name'); ?>
+                            <!-- <?php echo $this->session->userdata('outlet_name'); ?> -->
                         </h4>
                         <p><?php echo $this->session->userdata('address'); ?>
                             <br>
@@ -90,7 +90,7 @@
                     </p>
                     <div style="clear:both;"></div>
                     <table class="table table-condensed">
-                        <tbody>
+                        <tbody style="font-size: 11px !important;">
                             <?php
                             if (isset($sale_object->items)) {
                                 $i = 1;
@@ -106,7 +106,7 @@
                                         <td class="no-border border-bottom text-right"><?php echo $this->session->userdata('currency') . " " . $row->menu_price_without_discount; ?></td>
                                     </tr>
                                     <?php if(count($row->modifiers)>0){ ?>
-                                    <tr>
+                                    <!-- <tr>
                                         <td class="no-border border-bottom">Modifier:
                                             <small></small>
                                             <?php
@@ -124,27 +124,27 @@
                                             ?>
                                         </td>
                                         <td class="no-border border-bottom text-right"><?php echo $this->session->userdata('currency') . " " . $modifier_price; ?></td>
-                                    </tr>
+                                    </tr> -->
                                     <?php } ?>
                                 <?php }
                             }
                             ?>
 
                         </tbody>
-                        <tfoot>
+                        <tfoot style="font-size: 13px;">
                             <tr>
                                 <th>Total de Item(s): <?= $totalItems ?></th>
                                 <th style="text-align:left "></th>
                             </tr>
-                            <tr>
-                                <th>Sub Total</th>
+                            <tr style="border-top: 2px dashed #000 !important;">
+                                <th style="width: 70%;">Sub Total</th>
                                 <th class="text-right"><?php echo $this->session->userdata('currency') . " " . number_format($sale_object->sub_total, 2); ?></th>
                             </tr>
                         <th>Descuento (%):</th>
                         <th class="text-right"><?php echo $this->session->userdata('currency') . " " . $sale_object->total_discount_amount; ?></th>
                         </tr>
-                        <!-- <th>Servicio / Gastos de Envio:</th>
-                        <th class="text-right"><?php echo $this->session->userdata('currency') . " " . $sale_object->delivery_charge; ?></th> -->
+                        <th>Propina Voluntaria:</th>
+                        <th class="text-right"><?php echo $this->session->userdata('currency') . " " . $sale_object->delivery_charge; ?></th>
                         </tr>
                         <?php
                         if ($this->session->userdata('collect_tax')=='Yes' && $sale_object->sale_vat_objects!=NULL):
@@ -159,8 +159,8 @@
                             <?php
                         endif;
                         ?>
-                        <tr>
-                            <th>Total a Pagar</th>
+                        <tr style="border-top: 2px dashed #000 !important;">
+                            <th style="width: 70%;">Total a Pagar</th>
                             <th class="text-right"><?php echo $this->session->userdata('currency') . " " . number_format($sale_object->total_payable, 2); ?></th>
                         </tr>
                         </tfoot>
@@ -179,7 +179,9 @@
                             </tr>
                         </tbody>
                     </table> -->
-                    <p class="text-center"> <?php echo $sale_object->invoice_footer; ?></p>
+                    <p class="text-center" style="font-size: 13px !important;"> <?php echo $sale_object->invoice_footer; ?> <br> Siguenos:</p>
+                    <i class="fa fa-instagram" aria-hidden="true">Cuendiz Restaurant</i> <br>
+                    <i class="fa fa-facebook-square" aria-hidden="true">Cuendiz Restaurant</i>
 
                 </div>
                 <div style="clear:both;"></div>

@@ -168,8 +168,8 @@ $tables_modal = '';
 foreach ($tables as $table) {
     $tables_modal .= '<div class="floatleft fix single_order_table" id="single_table_info_holder_' . $table->id . '">';
     $tables_modal .= '<p class="table_name" style="font-weight:bold;"><span id="sit_name_' . $table->id . '">' . $table->name . '<span></p>';
-    $tables_modal .= '<p class="table_sit_capacity">Sit Capacity: <span id="sit_capacity_number_' . $table->id . '">' . $table->sit_capacity . '<span></p>';
-    $tables_modal .= '<p class="table_available">Available: <span id="sit_available_number_' . $table->id . '">' . $table->sit_capacity . '</span></p>';
+    $tables_modal .= '<p class="table_sit_capacity">Capacidad de mesa: <span id="sit_capacity_number_' . $table->id . '">' . $table->sit_capacity . '<span></p>';
+    $tables_modal .= '<p class="table_available">Disponible: <span id="sit_available_number_' . $table->id . '">' . $table->sit_capacity . '</span></p>';
     $tables_modal .= '<img class="table_image" src="' . base_url() . 'assets/images/table_icon2.png" alt="">';
     $tables_modal .= '<p class="running_order_in_table">Ordenes en Mesa</p>';
     $tables_modal .= '<div class="single_table_order_details_holder fix" id="single_table_order_details_holder_' . $table->id . '">';
@@ -504,7 +504,7 @@ foreach ($notifications as $single_notification) {
                     <div class="main_top fix">
                         <div class="button_holder fix">
                             <div class="single_button_middle_holder fix">
-                                <button data-selected="unselected" style="float:left;margin-left:2px;" id="dine_in_button" class="newtable"><i class="fas fa-table"></i> <?php echo 'Local'; ?></button>
+                                <button data-selected="unselected" style="float:left;margin-left:2px;" id="dine_in_button" class="newtable"><i class="fas fa-table"></i> <?php echo 'Mesas'; ?></button>
                             </div>
                             <div style="text-align:center;" class="single_button_middle_holder fix">
                                 <button id="take_away_button" class="newtake"><i class="fas fa-shopping-bag"></i> <?php echo lang('take_away'); ?></button>
@@ -587,7 +587,7 @@ foreach ($notifications as $single_notification) {
                             <tr style="background-color:#F5F5F5;">
                                 <td></td>
                                 <!-- Hidden input Delivery Charge -->
-                                <td style="font-weight:bold;text-align:right;" colspan="3"><?php echo lang('delivery_charge'); ?></td>
+                                <td style="font-weight:bold;text-align:right;" colspan="3"><?php echo 'Propina / Cargo por Servicio'; ?></td>
                                 <td style="text-align:right;padding-right:10px;"><input type="" name="" class="special_textbox" placeholder="Amt" id="delivery_charge" /></td>
                             </tr>
                             <tr style="background-color: #fba819;height: 35px; color: #000;">

@@ -38,9 +38,9 @@
 
         <div id="receipt-data">
             <div class="text-center">
-            <img src="<?php echo ss_location . ss_print_logo; ?>" alt="cuendizrestaurant" width="auto" height="80">
+            <img src="<?php echo ss_location . ss_print_logo; ?>" alt="cuendizrestaurant" width="auto" height="100">
                 <h4>
-                    <?php echo $this->session->userdata('outlet_name'); ?>
+                    <!-- <?php echo $this->session->userdata('outlet_name'); ?> -->
                 </h4>
                 <p>
                     <?php
@@ -106,19 +106,19 @@
                 ?>
 
                 </tbody>
-                <tfoot>
+                <tfoot style="font-size: 13px;">
                 <tr>
                     <th>Total de Item(s): <?= $totalItems ?></th>
                     <th style="text-align:left "></th>
                 </tr>
                 <tr style="border-top: 2px dashed #000 !important;">
-                    <th style="width: 70%;">Sub Total</th>
+                    <th style="width: 50%;">Sub Total</th>
                     <th class="text-right"><?php echo $this->session->userdata('currency') . " " . number_format($sale_object->sub_total, 2); ?></th>
                 </tr>
                 <th>Descuento (%):</th>
                 <th class="text-right"><?php echo $this->session->userdata('currency') . " " . $sale_object->total_discount_amount; ?></th>
                 </tr>
-                <th>Propina Voluntaria / Gastos de Envio:</th>
+                <th>Propina Voluntaria:</th>
                 <th class="text-right"><?php echo $this->session->userdata('currency') . " " . $sale_object->delivery_charge; ?></th>
                 </tr>
                 <?php
@@ -135,13 +135,14 @@
                 endif;
                 ?>
                 <tr style="border-top: 2px dashed #000 !important;">
-                    <th style="width: 70%;">Total a Pagar</th>
+                    <th style="width: 50%;">Total a Pagar</th>
                     <th class="text-right"><?php echo $this->session->userdata('currency') . " " . number_format($sale_object->total_payable, 2); ?></th>
                 </tr>
+
                 </tfoot>
             </table>
             <table class="table table-striped table-condensed"><tbody>
-
+            <p style="text-align: center !important"> Esto es una prefactura, porfavor exija su factura!! <br> <strong>PROPINA OPCIONAL</strong></p>
                 </tbody>
             </table>
 
@@ -155,7 +156,7 @@
 
 
         <span class="pull-right col-xs-12">
-                    <button onclick="window.print();" class="btn btn-block btn-primary">Print</button> </span>
+                    <button onclick="window.print();" class="btn btn-block btn-primary">Imprimir</button> </span>
         <div style="clear:both;"></div>
         <div class="col-xs-12" style="background:#F5F5F5; padding:10px;">
             <p style="font-weight:bold;">

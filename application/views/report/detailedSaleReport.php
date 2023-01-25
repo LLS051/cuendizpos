@@ -131,7 +131,7 @@
                                         $color = 'red';
                                     }
                                     elseif($value->name === 'Regalia'){
-                                        $color = 'yellow';
+                                        $color = '#ffd700';
                                     }
                                     elseif($value->name === 'Efectivo'){
                                         $color = '';
@@ -141,7 +141,7 @@
                                     }
 
                                     ?>
-                                    <tr style ='background-color:<?php echo $color?>'>
+                                    <tr style ='background-color:<?php echo $color?> !important'>
                                         <td style="text-align: center"><?php echo $key; ?></td>
                                         <td><?= date($this->session->userdata('date_format'), strtotime($value->sale_date)) ?></td>
                                         <td><?php echo $value->sale_no ?></td>
@@ -152,8 +152,8 @@
                                         <td><?php echo $value->sub_total_with_discount ?></td>
                                         <td><?php echo $value->delivery_charge ?></td>
                                         <td><?php echo $value->vat ?></td>
-                                        <td style ='background-color:<?php echo $color?>'><?php echo $value->total_payable ?></td>
-                                        <td style ='background-color:<?php echo $color?>'><?php echo $value->name ?></td>
+                                        <td style ='background-color:<?php echo $color?> !important'><?php echo $value->total_payable ?></td>
+                                        <td style ='background-color:<?php echo $color?> !important'><?php echo $value->name ?></td>
 
                                     </tr>
                                     <?php

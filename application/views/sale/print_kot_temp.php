@@ -1,11 +1,11 @@
-<?php 
+<?php
  // $order_number = '';
  // if($sale_object->order_type=='1'){
  //    $order_number = 'A '.$sale_object->sale_no;
  // }elseif($sale_object->order_type=='2'){
  //    $order_number = 'B '.$sale_object->sale_no;
  // }elseif($sale_object->order_type=='3'){
- //    $order_number = 'C '.$sale_object->sale_no;    
+ //    $order_number = 'C '.$sale_object->sale_no;
  // }
 $kot_info = $temp_kot_info->temp_kot_info;
 $kot_info = json_decode($kot_info);
@@ -50,21 +50,21 @@ $kot_info = json_decode($kot_info);
         <div id="wrapper">
             <div id="receiptData">
 
-                <div id="receipt-data"> 
+                <div id="receipt-data">
                     <div style="text-align: center;">
                         <h3>Cocina</h3>
-                        Order No: <?= $kot_info->order_number ?><br> 
-                        Fecha: <?= date($this->session->userdata('date_format'), strtotime($kot_info->order_date)); ?><br>  
-                        Cliente: <?php echo "$kot_info->customer_name"; ?><?= isset($kot_info->table_name) && $kot_info->table_name ? " // Mesa: " . $kot_info->table_name : '' ?><br> 
-                        Mesero: <?php echo "$kot_info->waiter_name"; ?>, Tipo de orden: <?php echo $kot_info->order_type; ?><br> 
+                        Order No: <?= $kot_info->order_number ?><br>
+                        Fecha: <?= date($this->session->userdata('date_format'), strtotime($kot_info->order_date)); ?><br>
+                        Cliente: <?php echo "$kot_info->customer_name"; ?><?= isset($kot_info->table_name) && $kot_info->table_name ? " // Mesa: " . $kot_info->table_name : '' ?><br>
+                        Mesero: <?php echo "$kot_info->waiter_name"; ?>, Tipo de orden: <?php echo $kot_info->order_type; ?><br>
                     </div>
-                     
+
                     <table class="table table-condensed">
                         <thead>
                             <tr style="font-weight: bold;">
                                 <td style="width: 5%;">SN</td>
                                 <td style="width: 85%;">Item</td>
-                                <td style="width: 10%;" style="text-align: center;">Qty</td>   
+                                <td style="width: 10%;" style="text-align: center;">Qty</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -76,7 +76,7 @@ $kot_info = json_decode($kot_info);
                                     $totalItems+=$row->kot_item_qty;
                                     ?>
                                     <tr>
-                                        <td><?php echo $i++; ?></td> 
+                                        <td><?php echo $i++; ?></td>
                                         <td>
                                             <?php echo $row->kot_item_name; ?> <br>
                                             <?php
@@ -89,34 +89,34 @@ $kot_info = json_decode($kot_info);
                                                 //         }else{
                                                 //             $modifiers_name .= $single_modifier->name.',';
                                                 //         }
-                                                //         $j++;    
+                                                //         $j++;
                                                 //     }
-                                                    
-                                                // } 
+
+                                                // }
                                             ?>
-                                            <?php if($row->modifiers){ echo "Modifiers: ". $row->modifiers."<br>";}?>
-                                        </td>  
-                                        <td style="text-align: center;"><?php echo $row->kot_item_qty; ?> </td>    
-                                    </tr>  
+                                            <?php if($row->modifiers){ echo "Opcion: ". $row->modifiers."<br>";}?>
+                                        </td>
+                                        <td style="text-align: center;"><?php echo $row->kot_item_qty; ?> </td>
+                                    </tr>
                                 <?php }
                             }
-                            ?> 
+                            ?>
                         </tbody>
-                        <tfoot>  
+                        <tfoot>
                             <tr>
-                                <th style="text-align: center;" colspan="6">Total Item(s): <?= $totalItems ?></th> 
+                                <th style="text-align: center;" colspan="6">Total Item(s): <?= $totalItems ?></th>
                             </tr>
                         </tfoot>
-                    </table>  
+                    </table>
 
                 </div>
                 <div style="clear:both;"></div>
-            </div> 
-            
+            </div>
+
             <div id="buttons" style="padding-top:10px; text-transform:uppercase;" class="no-print">
                 <hr>
                 <span class="pull-right col-xs-12">
-                <button onclick="window.print();" class="btn btn-block btn-primary">Print</button> </span>
+                <button onclick="window.print();" class="btn btn-block btn-primary">Imprimir</button> </span>
                 <div style="clear:both;"></div>
                 <div class="col-xs-12" style="background:#F5F5F5; padding:10px; color: red;">
                     <p style="font-weight:bold; text-transform: none;">
@@ -125,8 +125,8 @@ $kot_info = json_decode($kot_info);
                     <p style="text-transform: capitalize;">
                         1. Disable Header and Footer in browser's print setting<br>
                         For Firefox: File &gt; Page Setup &gt; Margins &amp; Header/Footer &gt; Headers & Footers &gt; Make all --blank--<br>
-                        For Chrome: Menu &gt; Print &gt; Uncheck Header/Footer in More Options 
-                    </p>  
+                        For Chrome: Menu &gt; Print &gt; Uncheck Header/Footer in More Options
+                    </p>
                 </div>
                 <div style="clear:both;"></div>
             </div>

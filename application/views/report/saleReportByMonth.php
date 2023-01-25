@@ -7,17 +7,17 @@
 <section class="content-header">
     <h3  style="text-align: center;margin-top: 0px">Reporte de Ventas por Mes</h3>
     <hr style="border: 1px solid #3c8dbc;">
-    <div class="row"> 
+    <div class="row">
         <div class="col-md-2">
             <?php echo form_open(base_url() . 'Report/saleReportByMonth') ?>
-            <div class="form-group"> 
-                <input tabindex="1" type="text" id="" name="startMonth" readonly class="form-control datepicker_months" placeholder="Start Month" value="<?php echo set_value('startMonth'); ?>">
-            </div> 
+            <div class="form-group">
+                <input tabindex="1" type="text" id="" name="startMonth" readonly class="form-control datepicker_months" placeholder="Mes de Inicio" value="<?php echo set_value('startMonth'); ?>">
+            </div>
         </div>
         <div class="col-md-2">
 
             <div class="form-group">
-                <input tabindex="1" type="text" id="endMonth" name="endMonth" readonly class="form-control datepicker_months" placeholder="End Month" value="<?php echo set_value('endMonth'); ?>">
+                <input tabindex="1" type="text" id="endMonth" name="endMonth" readonly class="form-control datepicker_months" placeholder="Mes de fin" value="<?php echo set_value('endMonth'); ?>">
             </div>
         </div>
         <div class="col-md-2">
@@ -44,11 +44,11 @@
         </div>
         <div class="col-md-offset-3 col-md-2">
             <div class="form-group">
-                <a target="_blank" href="<?= base_url() . 'PdfGenerator/saleReportByMonth/' ?><?= isset($start_date) ? $this->custom->encrypt_decrypt($start_date, 'encrypt') : '0'; ?>/<?= isset($end_date) ? $this->custom->encrypt_decrypt($end_date, 'encrypt') : '0'; ?>/<?= isset($user_id) ? $this->custom->encrypt_decrypt($user_id, 'encrypt') : '0'; ?>" class="btn btn-block btn-primary pull-left">Export PDF</a>
+                <a target="_blank" href="<?= base_url() . 'PdfGenerator/saleReportByMonth/' ?><?= isset($start_date) ? $this->custom->encrypt_decrypt($start_date, 'encrypt') : '0'; ?>/<?= isset($end_date) ? $this->custom->encrypt_decrypt($end_date, 'encrypt') : '0'; ?>/<?= isset($user_id) ? $this->custom->encrypt_decrypt($user_id, 'encrypt') : '0'; ?>" class="btn btn-block btn-primary pull-left">Exportar PDF</a>
             </div>
-        </div> 
-    </div> 
-</section> 
+        </div>
+    </div>
+</section>
 <style type="text/css">
     h1,h2,h3,h4,p{
         margin:3px 0px;
@@ -77,12 +77,12 @@
         border-top-color: white !important;
         margin-top: 5px;
     }
-</style> 
-<section class="content"> 
+</style>
+<section class="content">
     <div class="row">
         <div class="col-md-12">
             <!-- general form elements -->
-            <div class="box box-primary"> 
+            <div class="box box-primary">
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
                     <h3>Reporte de Ventas por Mes</h3>
@@ -130,10 +130,10 @@
                     </table>
                 </div>
                 <!-- /.box-body -->
-            </div> 
-        </div> 
-    </div> 
-</section> 
+            </div>
+        </div>
+    </div>
+</section>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
@@ -142,22 +142,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script> 
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
 
-<script>  
+<script>
     var jqry = $.noConflict();
     jqry(document).ready(function(){
 
-    var TITLE = "<?php echo ('Informe de Ventas por Mes'); ?> "+today; 
+    var TITLE = "<?php echo ('Informe de Ventas por Mes'); ?> "+today;
 
     jqry('#datatable').DataTable( {
         'autoWidth'   : false,
         'ordering'    : false,
         dom: 'Bfrtip',
-        buttons: [ 
+        buttons: [
             {
                 extend: 'print',
                 title: TITLE
@@ -173,4 +173,4 @@
         ]
     } );
 } );
-</script>   
+</script>

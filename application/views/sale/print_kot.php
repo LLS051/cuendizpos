@@ -1,4 +1,4 @@
-<?php 
+<?php
  $order_number = '';
  $order_type = '';
  if($sale_object->order_type=='1'){
@@ -9,7 +9,7 @@
     $order_number = 'B '.$sale_object->sale_no;
  }elseif($sale_object->order_type=='3'){
     $order_type = 'Delivery';
-    $order_number = 'C '.$sale_object->sale_no;    
+    $order_number = 'C '.$sale_object->sale_no;
  }
 
 
@@ -24,7 +24,7 @@ if(count($sale_object->tables_booked)>0){
             $tables_booked .= $single_table_booked->table_name.', ';
         }
         $w++;
-    }    
+    }
 }
 ?>
 <!doctype html>
@@ -64,22 +64,22 @@ if(count($sale_object->tables_booked)>0){
         <div id="wrapper">
             <div id="receiptData">
 
-                <div id="receipt-data"> 
+                <div id="receipt-data">
                     <div style="text-align: center;">
                         <h3>Cocina</h3>
-                        Order No: <?= $order_number ?><br> 
-                        Fecha: <?= date($this->session->userdata('date_format'), strtotime($sale_object->sale_date)); ?> <?= date('H:i',strtotime($sale_object->order_time)) ?><br>  
-                        Cliente: <?php echo "$sale_object->customer_name"; ?><?= $tables_booked!="" ? " // Mesa: " . $tables_booked : '' ?><br> 
-                        Tipo de Orden: <?php echo $order_type; ?><?= $sale_object->order_type=='1' ? " // Mesero: " . $sale_object->waiter_name : '' ?> 
+                        Order No: <?= $order_number ?><br>
+                        Fecha: <?= date($this->session->userdata('date_format'), strtotime($sale_object->sale_date)); ?> <?= date('H:i',strtotime($sale_object->order_time)) ?><br>
+                        Cliente: <?php echo "$sale_object->customer_name"; ?><?= $tables_booked!="" ? " // Mesa: " . $tables_booked : '' ?><br>
+                        Tipo de Orden: <?php echo $order_type; ?><?= $sale_object->order_type=='1' ? " // Mesero: " . $sale_object->waiter_name : '' ?>
                         <br>
                     </div>
-                     
+
                     <table class="table table-condensed">
                         <thead>
                             <tr style="font-weight: bold;">
                                 <td style="width: 5%;">SN</td>
                                 <td style="width: 85%;">Item</td>
-                                <td style="width: 10%;" style="text-align: center;">Qty</td>   
+                                <td style="width: 10%;" style="text-align: center;">Qty</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -91,7 +91,7 @@ if(count($sale_object->tables_booked)>0){
                                     $totalItems+=$row->qty;
                                     ?>
                                     <tr>
-                                        <td><?php echo $i++; ?></td> 
+                                        <td><?php echo $i++; ?></td>
                                         <td>
                                             <?php echo $row->menu_name; ?> <br>
                                             <?php
@@ -104,35 +104,35 @@ if(count($sale_object->tables_booked)>0){
                                                         }else{
                                                             $modifiers_name .= $single_modifier->name.',';
                                                         }
-                                                        $j++;    
+                                                        $j++;
                                                     }
-                                                    
-                                                } 
+
+                                                }
                                             ?>
-                                            <?php if(count($row->modifiers)>0){ echo "Modifiers: ". $modifiers_name."<br>";}?>
-                                            <?php if($row->menu_note!=""){ echo "Note: ".$row->menu_note; }?>
-                                        </td>  
-                                        <td style="text-align: center;"><?php echo $row->qty; ?> </td>    
-                                    </tr>  
+                                            <?php if(count($row->modifiers)>0){ echo "Opcion: ". $modifiers_name."<br>";}?>
+                                            <?php if($row->menu_note!=""){ echo "Nota: ".$row->menu_note; }?>
+                                        </td>
+                                        <td style="text-align: center;"><?php echo $row->qty; ?> </td>
+                                    </tr>
                                 <?php }
                             }
-                            ?> 
+                            ?>
                         </tbody>
-                        <tfoot>  
+                        <tfoot>
                             <tr>
-                                <th style="text-align: center;" colspan="6">Total Item(s): <?= $totalItems ?></th> 
+                                <th style="text-align: center;" colspan="6">Total Item(s): <?= $totalItems ?></th>
                             </tr>
                         </tfoot>
-                    </table>  
+                    </table>
 
                 </div>
                 <div style="clear:both;"></div>
-            </div> 
-            
+            </div>
+
             <div id="buttons" style="padding-top:10px; text-transform:uppercase;" class="no-print">
                 <hr>
                 <span class="pull-right col-xs-12">
-                <button onclick="window.print();" class="btn btn-block btn-primary">Print</button> </span>
+                <button onclick="window.print();" class="btn btn-block btn-primary">Imprimir</button> </span>
                 <div style="clear:both;"></div>
                 <div class="col-xs-12" style="background:#F5F5F5; padding:10px; color: red;">
                     <p style="font-weight:bold; text-transform: none;">
@@ -141,8 +141,8 @@ if(count($sale_object->tables_booked)>0){
                     <p style="text-transform: capitalize;">
                         1. Disable Header and Footer in browser's print setting<br>
                         For Firefox: File &gt; Page Setup &gt; Margins &amp; Header/Footer &gt; Headers & Footers &gt; Make all --blank--<br>
-                        For Chrome: Menu &gt; Print &gt; Uncheck Header/Footer in More Options 
-                    </p>  
+                        For Chrome: Menu &gt; Print &gt; Uncheck Header/Footer in More Options
+                    </p>
                 </div>
                 <div style="clear:both;"></div>
             </div>
